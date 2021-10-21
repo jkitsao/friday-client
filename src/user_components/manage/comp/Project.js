@@ -29,8 +29,6 @@ function Project({ project, handleDeleteProject }) {
         >
           <div className="flex w-full  items-center">
             <img src={create} className="w-16 h-16 object-cover " />
-          </div>
-          <div className="">
             <div
               className={`text-lg font-semibold transition-all duration-200 text-gray-800 ${
                 hover ? "underline text-blue-600" : ""
@@ -41,10 +39,12 @@ function Project({ project, handleDeleteProject }) {
               }}
             >
               {project?.project_name}
+              <div className="text-xs font-semibold text-gray-600">
+                {project?.project_id}
+              </div>
             </div>
-            <div className="text-xs font-semibold text-gray-600">
-              {project?.project_id}
-            </div>
+          </div>
+          <div className="">
             <div
               className="text-sm mt-2 pb-1 overflow-y-hidden text-gray-400"
               style={{
