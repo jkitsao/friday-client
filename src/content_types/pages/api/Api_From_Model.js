@@ -4,9 +4,10 @@ import ReactJson from "react-json-view";
 import Page_Heading from "./Page_Heading";
 import LoadingComp from "../../../components/LoadingComp";
 import api from "../../../api/axios";
+import { baseURL } from "../../../api/axios";
 function Api_From_Model({ model }) {
   const { name, project_id } = model;
-  const baseApi = ` http://localhost:5000/${project_id}/${name}`;
+  const baseApi = ` ${baseURL}/${project_id}/${name}`;
   const [data, setData] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
   //   const [api, setApi] = useState(baseApi);

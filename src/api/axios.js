@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL =
+export const baseURL =
   window.location.hostname !== "localhost"
     ? "https://booapi.onrender.com"
     : "http://localhost:5000";
