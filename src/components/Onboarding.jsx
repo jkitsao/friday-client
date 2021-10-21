@@ -3,7 +3,7 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-
+import api from '../api/axios'
 function Onboarding({ user }) {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(user?.email ? user.email : "");
@@ -35,7 +35,7 @@ function Onboarding({ user }) {
     formData.append("image", image);
     formData.append("data", JSON.stringify(data));
 
-    const result = await axios.post("http://localhost:5000/onboard", formData, {
+    const result = await api.post("/onboard", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     setloading(false);
@@ -55,7 +55,7 @@ function Onboarding({ user }) {
       isClosable: true,
       position: "top",
     });
-    if (result.success) return router.push("/");
+    // if (result.success) return router.push("/");
   };
   return (
     <div classNameName="">

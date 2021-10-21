@@ -5,6 +5,7 @@ function Social_form({ socialLinks, onClose, setSocialLinks }) {
   const [link, setLink] = useState("");
   //   const links = [];
   const addLink = () => {
+  if(!label || !link ) return;
     const data = {
       label,
       link,

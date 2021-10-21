@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from "../../../api/axios";
 import { Spinner } from "@chakra-ui/react";
 function Projects_form({ projects, setProjects, onClose }) {
   const [title, setTitle] = useState("");
@@ -7,6 +8,7 @@ function Projects_form({ projects, setProjects, onClose }) {
   const [repoUrl, setRepoUrl] = useState("");
   const [desc, setDesc] = useState("");
   const [image, setImage] = useState("");
+  const [stack, setStack] = useState("");
   const [preview, setPreview] = useState("");
   const [errors, setErrors] = useState(false);
   const [uploadingImg, setUploadingImg] = useState(false);
@@ -35,13 +37,9 @@ function Projects_form({ projects, setProjects, onClose }) {
     setUploadingImg(true);
     const formData = new FormData();
     formData.append("image", image);
-    const result = await axios.post(
-      "http://localhost:5000/assets/upload",
-      formData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
+    const result = await api.post("/assets/upload", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     setUploadingImg(false);
     return result.data;
   };
@@ -60,6 +58,7 @@ function Projects_form({ projects, setProjects, onClose }) {
       desc,
       image: imgObject,
       preview,
+      stack,
     };
     setProjects([...projects, data]);
     onClose();
@@ -104,6 +103,19 @@ function Projects_form({ projects, setProjects, onClose }) {
             onChange={(e) => setRepoUrl(e.target.value)}
             placeholder="github.com/user/acme"
           />
+        </div>
+        <div className="grid grid-cols-1 space-y-2">
+          <label className="text-sm font-bold text-gray-500 tracking-wide">
+            Tech stack used
+          </label>
+          <input
+            className="text-sm p-2 border border-gray-300 rounded-sm focus:outline-none focus:border-indigo-500"
+            type="text"
+            value={stack}
+            onChange={(e) => setStack(e.target.value)}
+            placeholder="html,css,javascript"
+          />
+          <span className="text-xs mt-0 ">separate with a coma</span>
         </div>
         <div className="flex-auto w-full mb-1 text-sm space-y-2">
           <label class="font-semibold text-gray-600 py-2">Description</label>

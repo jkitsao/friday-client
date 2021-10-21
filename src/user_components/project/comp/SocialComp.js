@@ -6,7 +6,13 @@ function SocialComp({ links, setSocialLinks }) {
 
   const handleRemoveItem = (e) => {
     const label = e.target.getAttribute("name");
+    alert(label);
     setSocialLinks(links.filter((item) => item.label !== label));
+  };
+
+  const handleIcon = (value) => {
+    if (value == "twitter")
+      return "https://upload.wikimedia.org/wikipedia/en/thumb/6/60/Twitter_Logo_as_of_2021.svg/100px-Twitter_Logo_as_of_2021.svg.png";
   };
   return (
     <motion.div

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ProfilePic() {
+export default function ProfilePic({setProfileImg}) {
   const [preview, setPreview] = useState(null);
   const [image, setImage] = useState();
   const [unsplashImg, setUnsplashImg] = useState(
@@ -12,6 +12,7 @@ export default function ProfilePic() {
     let reader = new FileReader();
     const file = e.target.files[0];
     setImage(file);
+    setProfileImg(file)
 
     reader.onloadend = () => {
       setPreview(reader.result);
@@ -24,7 +25,7 @@ export default function ProfilePic() {
   };
   return (
     <div className="py-3 center mx-auto my-8">
-      <div className="bg-white px-4 py-5 rounded-lg shadow-lg text-center w-1/4 mx-auto">
+      <div className="bg-white px-4 py-5 rounded-lg shadow-lg text-center w-3/4 sm:w-1/2 lg:w-2/5 mx-auto">
         <div className="mb-4">
           <img
             className="w-32 h-32 mx-auto rounded-full object-cover object-center"
@@ -34,7 +35,7 @@ export default function ProfilePic() {
         </div>
         <label className="cursor-pointer mt-6">
           <span className="mt-2 text-sm  leading-normal px-4 py-2 bg-blue-500 text-white  rounded-full">
-            Select Avatar
+            upload image
           </span>
           <input type="file" className="hidden" onChange={handleImageChange} />
         </label>

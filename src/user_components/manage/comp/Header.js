@@ -10,21 +10,25 @@ import {
   PencilIcon,
 } from "@heroicons/react/solid";
 import { Fragment } from "react";
+import manage from "../../../assets/manage.png";
 import { Menu, Transition } from "@headlessui/react";
 import Project_form_modal from "./project_form_modal";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header() {
+export default function Header({ refresh, setRefresh, name }) {
   return (
     <div className="lg:flex lg:items-center lg:justify-between">
       <div className="flex-1 min-w-0">
-        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-          Back End Developer
-        </h2>
+        <div className="flex items-center">
+          <img src={manage} className="w-16 h-16 object-cover" />
+          <h2 className="text-xl font-normal leading-5 text-gray-100 sm:text-2xl sm:truncate">
+            Dashboard for {name}
+          </h2>
+        </div>
         <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
-          <div className="mt-2 flex items-center text-sm text-gray-500">
+          {/* <div className="mt-2 flex items-center text-sm text-gray-500">
             <BriefcaseIcon
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
@@ -51,7 +55,7 @@ export default function Header() {
               aria-hidden="true"
             />
             Closing on January 9, 2020
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
@@ -83,7 +87,7 @@ export default function Header() {
 
         <span className="sm:ml-3">
           {/* modal opener */}
-          <Project_form_modal />
+          <Project_form_modal refresh={refresh} setRefresh={setRefresh} />
         </span>
 
         {/* Dropdown */}

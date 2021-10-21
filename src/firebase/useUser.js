@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
 import initFirebase from "../firebase/initFirebase";
-import axios from "axios";
+// import axios from "axios";
 import {
   removeUserCookie,
   setUserCookie,
@@ -15,8 +15,10 @@ initFirebase();
 
 const useUser = () => {
   const [user, setUser] = useState();
-  const [userDetails, setUserDetails] = useState(null);
-  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  let history = useHistory();
+  // const [userDetails, setUserDetails] = useState(null);
+  // const router = useRouter();
 
   const logout = async () => {
     return firebase
@@ -24,7 +26,7 @@ const useUser = () => {
       .signOut()
       .then(() => {
         // Sign-out successful.
-        router.push("/auth");
+        history.push("/auth");
       })
       .catch((e) => {
         console.error(e);
@@ -35,12 +37,15 @@ const useUser = () => {
     // Firebase updates the id token every hour, this
     // makes sure the react state and the cookie are
     // both kept up to date
+    setLoading(true);
     const cancelAuthListener = firebase.auth().onIdTokenChanged((user) => {
       if (user) {
+        setLoading(false);
         const userData = mapUserData(user);
         setUserCookie(userData);
         setUser(userData);
       } else {
+        setLoading(false);
         removeUserCookie();
         setUser();
       }
@@ -51,6 +56,7 @@ const useUser = () => {
     //   router.push("/");
     //   return;
     // }
+    setLoading(false);
     setUser(userFromCookie);
 
     return () => {
@@ -58,7 +64,7 @@ const useUser = () => {
     };
   }, []);
 
-  return { user, logout };
+  return { user, logout, loading };
 };
 
 export { useUser };

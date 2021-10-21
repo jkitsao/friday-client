@@ -1,28 +1,48 @@
-import { useState } from "react";
-import axios from "axios";
-import useSWR, { trigger } from "swr";
-import Project_page from "../user_components/project";
-import Layout from "../components/layout";
+import { useState, useEffect } from "react";
+// import axios from "axios";
+import api from "../api/axios";
+import Content_Page from "../content_types/pages/Content_Page";
 import { useParams } from "react-router-dom";
+import Empty_State from "../components/Empty_State";
+import LoadingComp from "../components/LoadingComp";
 function Project() {
   let { project_id } = useParams();
+  const [data, setData] = useState([]);
+  const [isloading, setIsLoading] = useState(false);
+  //fetch project via its id
+  async function fetchProject() {
+    setIsLoading(true);
+    try {
+      const res = await api.get("/project", {
+        params: { project_id },
+      });
+      setData(res.data.project);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
+  }
+  useEffect(() => {
+    if (project_id) {
+      fetchProject();
+    }
+  }, [project_id]);
+
   return (
     <>
-      <Layout>
-        <div className="lg:w-1/2 lg:mx-auto p-5 h-full rounded-sm">
-          <div className="text-2xl">{project_id}</div>
-          <Project_page />
+      {isloading ? (
+        <div className="lg:mx-auto h-screen flex items-center">
+          {/* <Content_Page project={data} /> */}
+          <LoadingComp />
         </div>
-      </Layout>
+      ) : (
+        <div className="lg:mx-auto h-full">
+          <Content_Page project={data} />
+        </div>
+      )}
     </>
   );
 }
-
-// export async function getServerSideProps(context) {
-//   const { project_id } = context.query;
-//   const url = "http://localhost:5000/project";
-//   const res = await axios.get(url, { params: { project_id } });
-//   return { props: { data: res.data } };
-// }
 
 export default Project;

@@ -14,7 +14,7 @@ import { CheckIcon } from "@heroicons/react/solid";
 import Project_form from "./Project_form";
 import { useUser } from "../../../firebase/useUser";
 
-export default function Project_form_modal() {
+export default function Project_form_modal({ refresh, setRefresh }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { user } = useUser();
   return (
@@ -35,7 +35,12 @@ export default function Project_form_modal() {
           {/* <ModalHeader>Modal Title</ModalHeader> */}
           <ModalCloseButton />
           <div>
-            <Project_form user={user} />
+            <Project_form
+              user={user}
+              refresh={refresh}
+              setRefresh={setRefresh}
+              onClose={onClose}
+            />
           </div>
         </ModalContent>
       </Modal>

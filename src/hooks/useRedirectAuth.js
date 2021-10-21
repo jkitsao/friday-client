@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from "../api/axios";
 function useRedirectAuth(user) {
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/onboard", user.id)
+    api
+      .get("/onboard", user.id)
       .then((res) => {
         alert(res.data.success);
       })

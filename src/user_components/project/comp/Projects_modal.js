@@ -43,6 +43,7 @@ export default function Projects_modal({ projects, setProjects }) {
         isOpen={isOpen}
         onClose={onClose}
         size="xl"
+        className="mx-2"
         scrollBehavior="inside"
       >
         <ModalOverlay />

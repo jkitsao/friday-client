@@ -11,6 +11,13 @@ import Projects_modal from "./comp/Projects_modal";
 export default function Portfolio_comp() {
   const [socialLinks, setSocialLinks] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [summary,setSummary]=useState(null)
+  const [profileImg,setProfileImg ]=useState(null)
+
+  const handleClick=(e)=>{
+    e.preventDefault()
+    alert(JSON.stringify({summary,socialLinks,projects}))
+  }
 
   return (
     <>
@@ -21,7 +28,7 @@ export default function Portfolio_comp() {
             {/* profile photo upload */}
 
             <div>
-              <ProfilePic />
+              <ProfilePic setProfileImg={setProfileImg} />
             </div>
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
@@ -112,7 +119,7 @@ export default function Portfolio_comp() {
                   Profile summary
                 </label>
                 <div className="">
-                  <Editor />
+                  <Editor setSummary={setSummary} />
                 </div>
               </div>
               <div className="col-span-6">
@@ -143,7 +150,8 @@ export default function Portfolio_comp() {
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
           <button
             type="submit"
-            disabled={true}
+            // disabled={true}
+            onClick={handleClick}
             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Save
