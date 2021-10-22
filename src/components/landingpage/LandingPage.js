@@ -2,12 +2,13 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-
+import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  // { name: "Product", href: "#" },
+  // { name: "Features", href: "#" },
+  // { name: "Marketplace", href: "#" },
+  // { name: "Company", href: "#" },
 ];
 
 export default function LandingPage() {
@@ -33,11 +34,11 @@ export default function LandingPage() {
               >
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
-                    <a href="#">
-                      <span className="sr-only">Workflow</span>
+                    <a href="/">
+                      <span className="sr-only">booo</span>
                       <img
-                        className="h-8 w-auto sm:h-10"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        className="h-8 w-auto sm:h-12 sm:-12 object-cover"
+                        src={logo}
                       />
                     </a>
                     <div className="-mr-2 flex items-center md:hidden">
@@ -58,12 +59,12 @@ export default function LandingPage() {
                       {item.name}
                     </a>
                   ))}
-                  <a
-                    href="#"
+                  <Link
+                    to="/auth"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
                     Log in
-                  </a>
+                  </Link>
                 </div>
               </nav>
             </div>

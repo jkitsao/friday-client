@@ -15,7 +15,7 @@ initFirebase();
 
 const useUser = () => {
   const [user, setUser] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   let history = useHistory();
   // const [userDetails, setUserDetails] = useState(null);
   // const router = useRouter();
@@ -37,15 +37,15 @@ const useUser = () => {
     // Firebase updates the id token every hour, this
     // makes sure the react state and the cookie are
     // both kept up to date
-    setLoading(true);
     const cancelAuthListener = firebase.auth().onIdTokenChanged((user) => {
+      // setLoading(true);
       if (user) {
-        setLoading(false);
+        setLoadingState("user");
         const userData = mapUserData(user);
         setUserCookie(userData);
         setUser(userData);
       } else {
-        setLoading(false);
+        setLoadingState("none");
         removeUserCookie();
         setUser();
       }
@@ -56,7 +56,7 @@ const useUser = () => {
     //   router.push("/");
     //   return;
     // }
-    setLoading(false);
+    // setLoading(false);
     setUser(userFromCookie);
 
     return () => {
@@ -64,7 +64,7 @@ const useUser = () => {
     };
   }, []);
 
-  return { user, logout, loading };
+  return { user, logout, loadingState };
 };
 
 export { useUser };

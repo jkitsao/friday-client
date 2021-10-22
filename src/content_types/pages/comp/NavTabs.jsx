@@ -8,7 +8,7 @@ const navigation = [
   { name: "Models", ref: "content-model", current: false },
   { name: "Content", ref: "content-tab", current: false },
   { name: "Api", ref: "api-tab", current: false },
-  { name: "Gallery", ref: "gallery", current: false },
+  // { name: "Gallery", ref: "gallery", current: false },
 //   { name: "Calendar", href: "#", current: false },
 ];
 
