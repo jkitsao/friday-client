@@ -15,6 +15,7 @@ import Content_model from "./pages/Content_model";
 import LandingPage from "./components/landingpage/LandingPage";
 import initFirebase from "./firebase/initFirebase";
 import { useUser } from "./firebase/useUser";
+// import Head from ''
 
 import { ChakraProvider } from "@chakra-ui/react";
 initFirebase();

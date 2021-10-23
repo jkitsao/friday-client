@@ -4,28 +4,19 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-const navigation = [
-  // { name: "Product", href: "#" },
-  // { name: "Features", href: "#" },
-  // { name: "Marketplace", href: "#" },
-  // { name: "Company", href: "#" },
-];
+import Head from "../seo/Head";
+const navigation = [];
 
 export default function LandingPage() {
   return (
     <div className="relative bg-white h-full">
-      <div className=" ">
+      <Head
+        title="lucidcms | simple headless cms"
+        name="lucidcms"
+        content="simple headless cms for side projects"
+      />
+      <div className="">
         <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:w-5/6 mx-auto lg:pb-28 xl:pb-32">
-          {/* <svg
-            className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
-            fill="currentColor"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <polygon points="50,0 100,0 50,100 0,100" />
-          </svg> */}
-
           <Popover>
             <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
               <nav

@@ -1,7 +1,7 @@
 import axios from "axios";
 export const baseURL =
   window.location.hostname !== "localhost"
-    ? "https://booapi.onrender.com"
+    ? "https://api.lucidcms.co"
     : "http://localhost:5000";
 
 const api = axios.create({

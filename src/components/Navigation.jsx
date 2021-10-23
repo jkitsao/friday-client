@@ -47,8 +47,8 @@ export default function Navigation() {
                     src={logo}
                     alt="Workflow"
                   />
-                  <span className='text-xl inline-block font-semibold font-mono mx-2 text-gray-50'>
-                  booCMS
+                  <span className='text-xl inline-block font-normal font-mono mx-2 text-gray-50'>
+                  lucidcms
                   </span>
                 </div>
                 <div className="hidden sm:block sm:ml-6">

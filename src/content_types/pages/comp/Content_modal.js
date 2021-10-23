@@ -44,6 +44,7 @@ export default function Content_modal({ project, refresh, setRefresh }) {
           setLoading(false);
           setRefresh(!refresh);
           setName(null);
+          // console.log({ res });
           return onClose();
         });
       } catch (error) {

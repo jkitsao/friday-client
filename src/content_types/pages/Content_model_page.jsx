@@ -13,19 +13,30 @@ import {
 import { Menu, Transition } from '@headlessui/react'
 import Content_modal from './comp/Content_modal'
 import Models from './comp/Models'
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+import Head from '../../components/seo/Head'
 
 export default function Content_model_page({project}) {
   const [refresh,setRefresh]=useState(false)
   return (
       <div>
-
+<Head
+        title={` ${project?.project_name}`}
+        name={` ${project?.project_name}`}
+        content="project"
+      />
     <div className="lg:flex lg:items-center lg:justify-between borer-b mb-3">
-      <div className="flex-1 min-w-0">
-        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Content Model</h2>
+      <div className="flex-1 min-w-0 py-2">
+        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-2xl font-mono sm:truncate">
+          {/* {
+            JSON.stringify(project)
+          } */}
+          {
+            project?.project_name
+          }
+        </h2>
+        <span>
+        
+        </span>
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
         <span className="sm:ml-3">

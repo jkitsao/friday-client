@@ -8,8 +8,6 @@ const navigation = [
   { name: "Models", ref: "content-model", current: false },
   { name: "Content", ref: "content-tab", current: false },
   { name: "Api", ref: "api-tab", current: false },
-  // { name: "Gallery", ref: "gallery", current: false },
-//   { name: "Calendar", href: "#", current: false },
 ];
 
 function classNames(...classes) {
@@ -46,8 +44,8 @@ export default function NavTabs({changeTab,currentTab}) {
                     src={logo}
                     alt="Workflow"
                   />
-                  <span className='text-xl inline-block font-semibold mx-2 text-gray-50'>
-                  boooCMS
+                  <span className='text-xl inline-block font-normal mx-2 text-gray-50'>
+                  Lucidcms
                   </span>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
