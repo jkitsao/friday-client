@@ -18,6 +18,7 @@ import { useUser } from "./firebase/useUser";
 // import Head from ''
 
 import { ChakraProvider } from "@chakra-ui/react";
+import LoadingComp from "./components/LoadingComp";
 initFirebase();
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <ChakraProvider>
-      {loadingState && (
+      {loadingState ? (
         <Router>
           <Switch>
             <Route exact path="/">
@@ -61,15 +62,16 @@ function App() {
             </Route>
           </Switch>
         </Router>
+      ) : (
+        <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
+          <LoadingComp />
+        </div>
       )}
     </ChakraProvider>
   );
 }
 
 function PrivateRoute({ loadingState, user, component: Component, ...rest }) {
-  // console.log({ kjkjkjk: user });
-  // <Component {...props} />;
-
   return (
     <Route
       {...rest}

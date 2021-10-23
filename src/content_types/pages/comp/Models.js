@@ -71,6 +71,7 @@ export default function Example({ project, refresh, setRefresh }) {
       fetchModels();
     }
   }, [projectId, refresh]);
+  const modelsArray = models && [...models].reverse();
   return (
     <>
       <div className="flex flex-col lg:w-4/5 lg:mx-auto">
@@ -110,14 +111,13 @@ export default function Example({ project, refresh, setRefresh }) {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {models &&
-                      models.map((model, index) => (
-                        <ModelComp
-                          key={index}
-                          model={model}
-                          deleteModel={deleteModel}
-                        />
-                      ))}
+                    {modelsArray.map((model, index) => (
+                      <ModelComp
+                        key={index}
+                        model={model}
+                        deleteModel={deleteModel}
+                      />
+                    ))}
                   </tbody>
                 </table>
               </div>

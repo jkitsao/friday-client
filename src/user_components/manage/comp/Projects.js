@@ -69,13 +69,15 @@ export default function Projects({ refresh, setRefresh }) {
       fetchProjects();
     }
   }, [user, refresh]);
+  const projectsArray = data && [...data].reverse();
+
   return (
     <>
       <div className="p-4 ">
         {!isLoading ? (
           <div className="flex flex-wrap ">
             {data &&
-              data.map((project) => (
+              projectsArray.map((project) => (
                 <Project
                   project={project}
                   refresh={refresh}
