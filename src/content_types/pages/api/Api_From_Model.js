@@ -5,6 +5,7 @@ import Page_Heading from "./Page_Heading";
 import LoadingComp from "../../../components/LoadingComp";
 import api from "../../../api/axios";
 import { baseURL } from "../../../api/axios";
+import Mid_Docs from "./Mid_Docs";
 function Api_From_Model({ model }) {
   const { name, project_id } = model;
   const baseApi = ` ${baseURL}/${project_id}/${name}`;
@@ -29,25 +30,13 @@ function Api_From_Model({ model }) {
     <section className="lg:w-5/6 mx-auto py-5">
       <Page_Heading
         baseApi={baseApi}
-        // setApi={setApi}
         fetchData={fetchData}
         name={name}
         project_id={project_id}
       />
-      <div className="py-2">
-        <span className="block font-medium">
-          model name:{" "}
-          <span className="font-semibold ml-2 text-green-600">{name}</span>
-        </span>
-        <span className="block font-medium">
-          project id:{" "}
-          <span className="font-semibold ml-2 text-green-600">
-            {project_id}
-          </span>
-        </span>
-      </div>
+      <Mid_Docs name={name} id={project_id} />
       <div
-        className="h-full mt-12 border p-5 bg-gray-50 overflow-y-auto "
+        className="h-full mt-2 m-2 border p-5 bg-gray-50 overflow-y-auto "
         style={{
           minHeight: "40vh",
           maxHeight: "65vh",
