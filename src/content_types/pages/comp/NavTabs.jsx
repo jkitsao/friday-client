@@ -57,8 +57,8 @@ export default function NavTabs({changeTab,currentTab}) {
                         onClick={()=>changeTab(item.ref)}
                         className={classNames(
                           item.ref===currentTab
-                            ? "inline-flex items-center px-6 py-4 mx-1 bg-gray-700 text-sm font-semibold text-gray-200 border-b-2"
-                            : "inline-flex items-center px-6 py-4 mx-1 text-sm font-semibold text-gray-300 hover:bg-gray-700",
+                            ? "inline-flex items-center px-6 py-4 transition-all duration-150 mx-1 bg-gray-700 text-sm font-semibold text-gray-200 border-b-2"
+                            : "inline-flex items-center px-6 py-4 mx-1 text-sm font-semibold transition-all duration-150 text-gray-300 hover:bg-gray-700",
                         //   "px-3 py-2 rounded-md text-sm font-medium"
                         )}
                         // aria-current={item.current ? "page" : undefined}

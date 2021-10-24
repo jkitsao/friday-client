@@ -36,7 +36,7 @@ function Api_From_Model({ model }) {
       />
       <Mid_Docs name={name} id={project_id} />
       <div
-        className="h-full mt-2 m-2 border p-5 bg-gray-50 overflow-y-auto "
+        className="h-full mt-2 m-2 border p-5 bg-white overflow-y-auto "
         style={{
           minHeight: "40vh",
           maxHeight: "65vh",

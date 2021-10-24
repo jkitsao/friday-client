@@ -25,6 +25,15 @@ import {
   useDisclosure,
   Spinner,
 } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 import Cloudinary_Uploader from "../../components/imageUploader/Cloudinary_Uploader";
 
 function MediaElement({ field, content, setContent, fields }) {
@@ -55,8 +64,8 @@ function MediaElement({ field, content, setContent, fields }) {
       {field.media_type === "custom" && (
         <div className="p-3 border-2 border-dotted bg-gray-50">
           <div>
-            {/* <CustomUpload setValue={setValue} value={value} /> */}
-            <Cloudinary_Uploader setValue={setValue} value={value} />
+            <CustomUpload setValue={setValue} value={value} />
+            {/* <Cloudinary_Uploader setValue={setValue} value={value} /> */}
           </div>
         </div>
       )}
@@ -116,28 +125,25 @@ function CustomUpload({ value, setValue }) {
   const [preview, setPreview] = useState("");
   const [image, setImage] = useState(null);
   const [uploadingImg, setUploadingImg] = useState(false);
-  const [desc, setDesc] = useState(value ? value.description : "");
-  const [errors, setErrors] = useState(false);
-  // const [imagePath, setImagePath] = useState(null);
-  const [title, setTitle] = useState(value ? value.title : "");
+  // const [desc, setDesc] = useState(value ? value.description : "");
+  // const [errors, setErrors] = useState(false);
+  // // const [thumb, setthumb] = useState(null);
+  // const [title, setTitle] = useState(value ? value.title : "");
 
   let data = {
-    title,
-    description: desc,
-    imagePath: "",
+    thumb: "",
     id: "",
   };
 
   //handle image upload
+
   const handleImageChange = (e) => {
     e.preventDefault();
     let reader = new FileReader();
     const file = e.target.files[0];
     setImage(file);
-
     reader.onloadend = () => {
       setPreview(reader.result);
-      //   setProfileImage(file);
     };
 
     reader.readAsDataURL(file);
@@ -162,15 +168,10 @@ function CustomUpload({ value, setValue }) {
   const test = async () => {
     try {
       const res = await uploadToBucket(image);
-      // let data = {
-      //   title,
-      //   description: desc,
-      //   imagePath: res.data.imagePath,
-      //   id: res.data.id,
-      // };
-      data.imagePath = res.data.imagePath;
-      data.id = res.data.id;
-      setValue(data);
+
+      // data.thumb = res.data.thumb;
+      // data.id = res.data.id;
+      setValue(res.data);
       return onClose();
     } catch (error) {
       console.error(error);
@@ -183,10 +184,19 @@ function CustomUpload({ value, setValue }) {
           ref={btnRef}
           onClick={onOpen}
           type="button"
-          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          style={{
+            color: "white",
+            border: "none",
+            maxWidth: "10rem",
+            backgroundColor: "gray",
+            borderRadius: "4px",
+            //   height: "25px",
+            padding: "0.7rem",
+          }}
+          // className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-          click to upload image
+          {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
+          upload image
         </button>
       )}
       {value && (
@@ -197,22 +207,16 @@ function CustomUpload({ value, setValue }) {
             onClick={onOpen}
             cursor="pointer"
             objectFit="cover"
-            src={value.imagePath}
+            src={value.thumb}
             alt=""
           />
         </div>
       )}
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-        size="lg"
-      >
-        <DrawerOverlay />
-        <DrawerContent bgColor="gray.800">
-          <DrawerCloseButton color="white" />
-          <DrawerHeader textColor="gray.100">
+      <Modal isOpen={isOpen} onClose={onClose} size="xl">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton color="gry.700" />
+          <ModalHeader textColor="gray.700">
             <div className="flex w-full justify-center items-center h-full">
               <span>
                 <svg
@@ -232,59 +236,23 @@ function CustomUpload({ value, setValue }) {
               </span>
               <span>upload image</span>
             </div>
-          </DrawerHeader>
+          </ModalHeader>
 
-          <DrawerBody bgColor="gray.50">
-            <form className="py-8">
-              <div className="grid grid-cols-1 space-y-2 my-2">
-                <label className="text-base font-bold text-gray-500 tracking-wide">
-                  Title
-                </label>
-                <input
-                  className={`text-sm p-2 border ${
-                    !errors ? "border-gray-300" : "border-red-600"
-                  } rounded-sm focus:outline-none focus:border-indigo-500`}
-                  type="text"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  placeholder=""
-                />
-              </div>
-              <div className="flex-auto w-full mb-1 text-sm space-y-2 my-2">
-                <label class="font-semibold text-gray-600 py-2">
-                  Description
-                </label>
-                <textarea
-                  className="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4"
-                  placeholder="Brief description of the project"
-                  spellcheck="false"
-                  value={desc}
-                  onChange={(e) => setDesc(e.target.value)}
-                ></textarea>
-                <p class="text-xs text-gray-400 text-left my-3">
-                  You inserted {desc?.length} characters{" "}
-                  {desc && (
-                    <span
-                      className="text-red-700 font-semibold mx-5 cursor-pointer"
-                      onClick={() => setDesc("")}
-                    >
-                      clear
-                    </span>
-                  )}
-                </p>
-              </div>
+          <ModalBody bgColor="gray.50 relative">
+            <form className="py-8 ">
+              {/* <div className="fixed w-full h-full bg-gray-900  opacity-70"></div> */}
               <div className="grid grid-cols-1 space-y-2">
-                <label className="text-sm font-bold  tracking-wide">
+                {/* <label className="text-sm font-bold  tracking-wide">
                   screenshot/image
-                </label>
+                </label> */}
                 <div className="flex items-center justify-center w-full">
                   <label
                     className={`flex flex-col rounded-lg ${
-                      !image && "border-4 border-dashed"
+                      !image && !value?.thumb && "border-4 border-dashed"
                     } w-full  py-3 px-2 group text-center`}
                   >
                     <div className="h-full w-full text-center flex flex-col items-center justify-center   ">
-                      {!preview && !value?.imagePath ? (
+                      {!preview && !value?.thumb ? (
                         <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-700 hover:text-white">
                           <svg
                             className="w-8 h-8"
@@ -304,25 +272,46 @@ function CustomUpload({ value, setValue }) {
                           />
                         </label>
                       ) : (
-                        <div className="w-full relative ">
-                          <img
-                            src={preview ? preview : value?.imagePath}
-                            alt=""
-                            className=" max-h-90 object-cover w-full"
-                          />
-                          {value?.imagePath && (
-                            <div className="py-3 bg-white px-4">
-                              <button
-                                className="text-red-600"
-                                onClick={() => setValue({})}
-                              >
-                                delete
-                              </button>
+                        <div className="w-full relative">
+                          <div className="">
+                            <img
+                              src={preview ? preview : value?.regular}
+                              alt=""
+                              className=" object-cover w-full "
+                              style={{
+                                maxHeight: "17rem",
+                              }}
+                            />
+                            {/* {JSON.stringify(info)} */}
+                          </div>
+
+                          {value?.thumb && (
+                            <div
+                              className="m-2 absolute top-0 right-0 rounded-full p-3 bg-white text-gray-500 hover:bg-red-600 hover:text-red-50"
+                              onClick={() => setValue({})}
+                            >
+                              <span className="">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-6 w-6 cursor-pointer"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </span>
                             </div>
                           )}
-                          {preview && image && (
+
+                          {preview && image && !value?.thumb && (
                             <div
-                              className="m-2 absolute top-0 right-0 rounded-full p-3 bg-black text-gray-100 hover:bg-red-600 hover:text-red-50"
+                              className="m-2 absolute top-0 right-0 rounded-full p-3 bg-white text-gray-500 hover:bg-red-600 hover:text-red-50"
                               onClick={cancelImage}
                             >
                               <span className="">
@@ -350,9 +339,9 @@ function CustomUpload({ value, setValue }) {
                 </div>
               </div>
             </form>
-          </DrawerBody>
+          </ModalBody>
 
-          <DrawerFooter>
+          <ModalFooter>
             <Button variant="ghost" colorScheme="red" mr={3} onClick={onClose}>
               Cancel
             </Button>
@@ -364,9 +353,9 @@ function CustomUpload({ value, setValue }) {
             >
               {uploadingImg ? <Spinner /> : " Publish image"}
             </Button>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }

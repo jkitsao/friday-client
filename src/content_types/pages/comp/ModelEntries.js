@@ -96,7 +96,7 @@ function ModelEntriesTable({
   isLoading,
   deleteEntry,
 }) {
-  const contentArray = fields.content && fields.content.reverse();
+  const contentArray = fields.content && [...fields.content].reverse();
   return (
     <>
       <div className="flex flex-col lg:w-10/12 lg:mx-auto">
