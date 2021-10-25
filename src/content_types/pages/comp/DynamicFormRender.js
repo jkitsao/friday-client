@@ -73,7 +73,7 @@ function DynamicFormRender({
       {/* {JSON.stringify(fields)} */}
       {!isLoading ? (
         <div className="w-full ">
-          <section className="p-8 lg:w-3/4 xl:w-1/2  lg:mx-auto  border rounded-md shadow-sm bg-white">
+          <section className="p-8 lg:w-3/4 xl:w-1/2  lg:mx-auto rounded-md shadow-lg bg-white">
             {selected?.fields &&
               selected?.fields.map((field, index) => (
                 <FormComp

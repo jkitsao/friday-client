@@ -84,7 +84,7 @@ function NewEntry({
         // finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent bgColor="gray.200">
+        <DrawerContent bgColor="gray.50">
           <DrawerCloseButton color="white" margin="4" fontSize="lg" />
           <DrawerHeader bgColor="gray.700" borderBottom="midnightblue">
             <div className="w-full h-full items-center text-gray-100 flex justify-center">
