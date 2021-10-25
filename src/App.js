@@ -26,7 +26,7 @@ function App() {
 
   return (
     <ChakraProvider>
-      {loadingState ? (
+      
         <Router>
           <Switch>
             <Route exact path="/">
@@ -47,31 +47,43 @@ function App() {
               <Auth />
             </Route>
             <Route exact path="/projects/:project_id">
-              <PrivateRoute
-                component={Project}
-                user={user}
-                loadingState={loadingState}
-              />
+              {loadingState ? (
+                <PrivateRoute
+                  component={Project}
+                  user={user}
+                  loadingState={loadingState}
+                />
+              ) : (
+                <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
+                  <LoadingComp />
+                </div>
+              )}
             </Route>
             <Route path="/projects/:project_id/content_models/:model">
+            {loadingState ? (
+
               <PrivateRoute
                 component={Content_model}
                 user={user}
                 loadingState={loadingState}
               />
+              ) : (
+                <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
+                  <LoadingComp />
+                </div>
+              )}
             </Route>
           </Switch>
         </Router>
-      ) : (
-        <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
-          <LoadingComp />
-        </div>
-      )}
+    
     </ChakraProvider>
   );
 }
 
 function PrivateRoute({ loadingState, user, component: Component, ...rest }) {
+  // console.log({ kjkjkjk: user });
+  // <Component {...props} />;
+
   return (
     <Route
       {...rest}

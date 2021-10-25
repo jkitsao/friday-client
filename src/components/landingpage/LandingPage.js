@@ -25,12 +25,15 @@ export default function LandingPage() {
               >
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
-                    <a href="/">
+                    <a href="/" className="flex items-center">
                       <span className="sr-only">booo</span>
                       <img
                         className="h-8 w-auto sm:h-12 sm:-12 object-cover"
                         src={logo}
                       />
+                      <span className="font-semibold text-xl font-mono text-blue-800 mx-1 ">
+                        Lucidcms
+                      </span>
                     </a>
                     <div className="-mr-2 flex items-center md:hidden">
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -52,9 +55,9 @@ export default function LandingPage() {
                   ))}
                   <Link
                     to="/auth"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                    className="px-8 py-2 border border-transparent text-base font-medium rounded text-white bg-indigo-400 hover:bg-indigo-700 md:py-3 md:text-sm "
                   >
-                    Log in
+                    Sign in
                   </Link>
                 </div>
               </nav>
@@ -76,11 +79,7 @@ export default function LandingPage() {
                 <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="px-5 pt-4 flex items-center justify-between">
                     <div>
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt=""
-                      />
+                      <img className="h-8 w-auto" src={logo} alt="" />
                     </div>
                     <div className="-mr-2">
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -133,7 +132,7 @@ export default function LandingPage() {
                     href="/projects"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                   >
-                    Get started
+                    Dashboard
                   </a>
                 </div>
                 {/* <div className="mt-3 sm:mt-0 sm:ml-3">
@@ -153,10 +152,21 @@ export default function LandingPage() {
         <img
           className=" w-full h-full object-cover"
           //   src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-          src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+          src="https://lucidcms.imgix.net/screely-1635156694087.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
           alt=""
           style={{
-            maxHeight: "800px",
+            maxHeight: "1000px",
+          }}
+        />
+      </div>
+      <div className="relative lg:w-5/6 xl:w-4/5 lg:mx-auto shadow-md border rounded-md lg:mb-12 overflow-hidden">
+        <img
+          className=" w-full h-full object-cover"
+          //   src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+          src="https://lucidcms.imgix.net/screely-1635157126513.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+          alt=""
+          style={{
+            maxHeight: "1000px",
           }}
         />
       </div>
