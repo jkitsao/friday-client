@@ -168,14 +168,8 @@ export default function LandingPage() {
       <Landing_Image image_src={fieldsImage} />
       <Landing_Text />
       <Landing_Image image_src={contentImage} />
-      {/* <Landing_Text />
-      <Landing_Image image_src={projectImage} />
       <Landing_Text />
       <Landing_Image image_src={apiImage} />
-      <Landing_Text />
-      <Landing_Image image_src={projectImage} />
-      <Landing_Text />
-      <Landing_Image image_src={apiImage} /> */}
 
       <div className="w-full h-12 flex items-center justify-center  bg-gray-900 text-gray-200 sticky bottom-0">
         <div className="text-center">
