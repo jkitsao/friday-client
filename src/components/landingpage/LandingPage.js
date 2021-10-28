@@ -5,7 +5,19 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import Head from "../seo/Head";
+import Landing_Image from "./Landing_Image";
+import Landing_Text from "./Landing_Text";
 const navigation = [];
+const projectImage =
+  "https://lucidcms.imgix.net/screely-1635156694087.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80";
+const apiImage =
+  "https://lucidcms.imgix.net/screely-1635157126513.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80";
+const modelsImage =
+  "https://lucidcms.imgix.net/models.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80";
+const fieldsImage =
+  "https://lucidcms.imgix.net/fields.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80";
+const contentImage =
+  "https://lucidcms.imgix.net/content.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80";
 
 export default function LandingPage() {
   return (
@@ -114,17 +126,17 @@ export default function LandingPage() {
             <div className="text-center ">
               <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                 <span className="block xl:inline">
-                  Simple Content management for
+                  Content management for
                   <br />
                 </span>{" "}
                 <span className="block text-indigo-600 xl:inline">
                   your side projects
                 </span>
               </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-auto">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                fugiat aliqua.
+              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-2xl sm:mx-auto md:mt-5 md:text-xl lg:mx-auto">
+                A simple headless content management system that acts primarily
+                as a content repository, makes content accessible via an API
+                without a built-in front-end or presentation layer.
               </p>
               <div className="mt-5 sm:mt-8 sm:flex justify-center ">
                 <div className="rounded-md shadow">
@@ -148,29 +160,35 @@ export default function LandingPage() {
           </main>
         </div>
       </div>
-      <div className="relative lg:w-5/6 xl:w-4/5 lg:mx-auto shadow-md border rounded-md lg:mb-12 overflow-hidden">
-        <img
-          className=" w-full h-full object-cover"
-          //   src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-          src="https://lucidcms.imgix.net/screely-1635156694087.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
-          alt=""
-          style={{
-            maxHeight: "1000px",
-          }}
-        />
+      <Landing_Text />
+      <Landing_Image image_src={projectImage} />
+      <Landing_Text />
+      <Landing_Image image_src={modelsImage} />
+      <Landing_Text />
+      <Landing_Image image_src={fieldsImage} />
+      <Landing_Text />
+      <Landing_Image image_src={contentImage} />
+      {/* <Landing_Text />
+      <Landing_Image image_src={projectImage} />
+      <Landing_Text />
+      <Landing_Image image_src={apiImage} />
+      <Landing_Text />
+      <Landing_Image image_src={projectImage} />
+      <Landing_Text />
+      <Landing_Image image_src={apiImage} /> */}
+
+      <div className="w-full h-12 flex items-center justify-center  bg-gray-900 text-gray-200 sticky bottom-0">
+        <div className="text-center">
+          <span>made with &#10084;&#65039; by{""}</span>
+          <a
+            href="https://www.twitter.com/j_kitsao"
+            target="_blank"
+            className="text-yellow-400 hover:text-blue-400 transition-all duration-200 hover:bg-gray-800 px-1 py-1"
+          >
+            @Jacksonkitsao &#128513;
+          </a>
+        </div>
       </div>
-      <div className="relative lg:w-5/6 xl:w-4/5 lg:mx-auto shadow-md border rounded-md lg:mb-12 overflow-hidden">
-        <img
-          className=" w-full h-full object-cover"
-          //   src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-          src="https://lucidcms.imgix.net/screely-1635157126513.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
-          alt=""
-          style={{
-            maxHeight: "1000px",
-          }}
-        />
-      </div>
-      <div className="w-full h-48 bg-gray-900"></div>
     </div>
   );
 }
