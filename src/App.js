@@ -15,6 +15,7 @@ import Content_model from "./pages/Content_model";
 import LandingPage from "./components/landingpage/LandingPage";
 import initFirebase from "./firebase/initFirebase";
 import { useUser } from "./firebase/useUser";
+import Payment from "./pages/Payment";
 // import Head from ''
 
 import { ChakraProvider } from "@chakra-ui/react";
@@ -26,56 +27,66 @@ function App() {
 
   return (
     <ChakraProvider>
-      
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              {/* <Home /> */}
-              <LandingPage />
-            </Route>
-            <Route exact path="/onboard">
-              <Onboard />
-            </Route>
-            <Route exact path="/projects">
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            {/* <Home /> */}
+            <LandingPage />
+          </Route>
+          <Route exact path="/onboard">
+            <Onboard />
+          </Route>
+          <Route exact path="/projects">
+            <PrivateRoute
+              component={Manage_page}
+              user={user}
+              loadingState={loadingState}
+            />
+          </Route>
+          <Route exact path="/auth">
+            <Auth />
+          </Route>
+          <Route exact path="/projects/:project_id">
+            {loadingState ? (
               <PrivateRoute
-                component={Manage_page}
+                component={Project}
                 user={user}
                 loadingState={loadingState}
               />
-            </Route>
-            <Route exact path="/auth">
-              <Auth />
-            </Route>
-            <Route exact path="/projects/:project_id">
-              {loadingState ? (
-                <PrivateRoute
-                  component={Project}
-                  user={user}
-                  loadingState={loadingState}
-                />
-              ) : (
-                <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
-                  <LoadingComp />
-                </div>
-              )}
-            </Route>
-            <Route path="/projects/:project_id/content_models/:model">
+            ) : (
+              <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
+                <LoadingComp />
+              </div>
+            )}
+          </Route>
+          <Route path="/projects/:project_id/content_models/:model">
             {loadingState ? (
-
               <PrivateRoute
                 component={Content_model}
                 user={user}
                 loadingState={loadingState}
               />
-              ) : (
-                <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
-                  <LoadingComp />
-                </div>
-              )}
-            </Route>
-          </Switch>
-        </Router>
-    
+            ) : (
+              <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
+                <LoadingComp />
+              </div>
+            )}
+          </Route>
+          <Route exact path="/checkout">
+            {loadingState ? (
+              <PrivateRoute
+                component={Payment}
+                user={user}
+                loadingState={loadingState}
+              />
+            ) : (
+              <div className="h-full min-h-screen flex justify-center items-center bg-gray-800 bg-opacity-30">
+                <LoadingComp />
+              </div>
+            )}
+          </Route>
+        </Switch>
+      </Router>
     </ChakraProvider>
   );
 }

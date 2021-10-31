@@ -2,10 +2,12 @@
 import { Fragment, useEffect, useState } from "react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { Listbox, Transition } from "@headlessui/react";
-import axios from "axios";
-import DynamicFormRender from "./DynamicFormRender";
+// import axios from "axios";
+// import DynamicFormRender from "./DynamicFormRender";
 import ModelEntries from "./ModelEntries";
 import NewEntry from "./NewEntry";
+import api from "../../../api/axios";
+
 import { nanoid } from "nanoid";
 
 function classNames(...classes) {
@@ -18,13 +20,32 @@ export default function Content_Tab_Header({
   model,
   isLoading,
 }) {
-  // const [models, setModels] = useState([]);
-  // const id = () => nanoid(10);
   const [selected, setSelected] = useState(models[0]);
   const [content, setContent] = useState({ id: nanoid(10) });
   const [data, setData] = useState([]);
-  const [fields] = useState({ id: () => nanoid(10) });
   const [refresh, setRefresh] = useState(false);
+  const [fields, setFields] = useState([]);
+  const [loading, setLoading] = useState(false);
+  //fetching content
+  const fetchEntries = async () => {
+    setLoading(true);
+    try {
+      const res = await api.get("/content", {
+        params: {
+          model_name: selected?.name,
+          project_id: selected?.project_id,
+        },
+      });
+      setFields(res.data.content);
+      // setContent(res.data.content.content);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setFields([]);
+      console.error(err);
+    }
+  };
+  //useEffect
 
   useEffect(() => {
     if (models) {
@@ -39,6 +60,10 @@ export default function Content_Tab_Header({
       setData(arr);
     }
   }, [content]);
+
+  useEffect(() => {
+    fetchEntries();
+  }, [selected, refresh]);
 
   return (
     <div className=" lg:items-center lg:justify-between">
@@ -82,6 +107,9 @@ export default function Content_Tab_Header({
             data={data}
             refresh={refresh}
             setRefresh={setRefresh}
+            fields={fields}
+            loading={loading}
+            setLoading={setLoading}
           />
         </div>
       </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 import Image_comp from "./Image_comp";
 function Search_comp({ query, page, setLoading, setValue, onClose }) {
   const api = `https://api.unsplash.com/search/photos?page=${page}&query=${query}`;
-  const key = "l0Q9rfXvRoVv3rM3CvkP1un7VxeN-WKy8XXhNOxBuC0";
+  const key = process.env.REACT_APP_UNSPLASH_ID;
 
   const [images, setImages] = useState([]);
   useEffect(() => {

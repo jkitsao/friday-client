@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image_comp from "./Image_comp";
 function Images({ page, setLoading, setValue, onClose }) {
-  const key = "l0Q9rfXvRoVv3rM3CvkP1un7VxeN-WKy8XXhNOxBuC0";
+  const key = process.env.REACT_APP_UNSPLASH_ID;
   const api = `https://api.unsplash.com/photos?page=${page}`;
   // https://api.unsplash.com/photos?page=1
   const [images, setImages] = useState([]);

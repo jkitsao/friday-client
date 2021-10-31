@@ -11,48 +11,50 @@ function ModelEntries({
   data,
   refresh,
   setRefresh,
+  fields,
+  loading,
+  setLoading,
 }) {
-  // const [loading, setLoading] = useState(false);
-  const [fields, setFields] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const fetchEntries = async () => {
-    setIsLoading(true);
-    try {
-      const res = await api.get("/content", {
-        params: {
-          model_name: selected?.name,
-          project_id: selected?.project_id,
-        },
-      });
-      setFields(res.data.content);
-      // setContent(res.data.content.content);
-      setIsLoading(false);
-    } catch (err) {
-      setIsLoading(false);
-      setFields([]);
-      console.error(err);
-    }
-  };
+  // const [fields, setFields] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const fetchEntries = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     const res = await api.get("/content", {
+  //       params: {
+  //         model_name: selected?.name,
+  //         project_id: selected?.project_id,
+  //       },
+  //     });
+  //     setFields(res.data.content);
+  //     // setContent(res.data.content.content);
+  //     setIsLoading(false);
+  //   } catch (err) {
+  //     setIsLoading(false);
+  //     setFields([]);
+  //     console.error(err);
+  //   }
+  // };
   const deleteEntry = async (entryId) => {
-    setIsLoading(true);
+    setLoading(true);
     try {
       const res = await api.post("/content/delete", {
         id: entryId,
       });
-      setIsLoading(false);
+      setLoading(false);
       setRefresh(!refresh);
     } catch (err) {
-      setIsLoading(false);
+      setLoading(false);
       console.error(err);
     }
   };
 
-  useEffect(() => {
-    fetchEntries();
-  }, [selected, refresh]);
+  // useEffect(() => {
+  //   fetchEntries();
+  // }, [selected, refresh]);
   return (
     <div className=" p-5 min-h-screen h-full">
-      {isLoading && (
+      {loading && (
         <div
           className="w-full flex justify-center items-center"
           style={{
@@ -63,7 +65,7 @@ function ModelEntries({
           <LoadingComp />
         </div>
       )}
-      {!isLoading && fields.content && fields?.content.length > 0 && (
+      {!loading && fields.content && fields?.content.length > 0 && (
         <ModelEntriesTable
           fields={fields}
           selected={selected}
@@ -72,11 +74,11 @@ function ModelEntries({
           data={data}
           refresh={refresh}
           setRefresh={setRefresh}
-          isLoading={isLoading}
+          isLoading={loading}
           deleteEntry={deleteEntry}
         />
       )}
-      {!isLoading && fields.content && fields?.content.length < 1 && (
+      {!loading && fields?.content?.length < 1 && (
         <div>
           <Empty_State title="Add your fisrt entry" description="" />
         </div>
@@ -93,7 +95,7 @@ function ModelEntriesTable({
   data,
   refresh,
   setRefresh,
-  isLoading,
+  // isLoading,
   deleteEntry,
 }) {
   const contentArray = fields.content && [...fields.content].reverse();
