@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Head from "../seo/Head";
 import Landing_Image from "./Landing_Image";
 import Landing_Text from "./Landing_Text";
+import CarouselPage from "../carousel/CarouselPage";
 const navigation = [];
 const projectImage =
   "https://lucidcms.imgix.net/screely-1635156694087.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80";
@@ -160,7 +161,7 @@ export default function LandingPage() {
           </main>
         </div>
       </div>
-      <Landing_Text />
+      {/* <Landing_Text />
       <Landing_Image image_src={projectImage} />
       <Landing_Text />
       <Landing_Image image_src={modelsImage} />
@@ -169,10 +170,11 @@ export default function LandingPage() {
       <Landing_Text />
       <Landing_Image image_src={contentImage} />
       <Landing_Text />
-      <Landing_Image image_src={apiImage} />
+      <Landing_Image image_src={apiImage} /> */}
+      <CarouselPage />
 
-      <div className="w-full h-12 flex items-center justify-center  bg-gray-900 text-gray-200 sticky bottom-0">
-        <div className="text-center">
+      <div className="mx-auto h-10 flex items-center justify-center  bg-gray-900 text-gray-200 sticky bottom-0 w-1/5 rounded-t-sm opacity-95">
+        <div className="text-center text-base">
           <span>made with &#10084;&#65039; by{""}</span>
           <a
             href="https://www.twitter.com/j_kitsao"

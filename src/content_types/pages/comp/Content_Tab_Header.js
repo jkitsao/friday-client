@@ -43,6 +43,7 @@ export default function Content_Tab_Header({
       setLoading(false);
       setFields([]);
       console.error(err);
+      // fetchEntries();
     }
   };
   //useEffect
