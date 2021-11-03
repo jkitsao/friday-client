@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from '../../../assets/logo.png'
+import { useUser } from "../../../firebase/useUser";
 const navigation = [
   { name: "Projects", ref: "projects", current: true },
   { name: "Models", ref: "content-model", current: false },
@@ -15,6 +16,7 @@ function classNames(...classes) {
 }
 
 export default function NavTabs({changeTab,currentTab}) {
+  const {logout}=useUser()
   return (
     <Disclosure as="nav" className="bg-gray-900 sticky top-0">
       {({ open }) => (
@@ -84,7 +86,7 @@ export default function NavTabs({changeTab,currentTab}) {
                           <span className="sr-only">Open user menu</span>
                           <img
                             className="h-8 w-8 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            src="https://avatars.dicebear.com/api/bottts/john.svg"
                             alt=""
                           />
                         </Menu.Button>
@@ -103,7 +105,7 @@ export default function NavTabs({changeTab,currentTab}) {
                           static
                           className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                         >
-                          <Menu.Item>
+                          {/* <Menu.Item>
                             {({ active }) => (
                               <a
                                 href="#"
@@ -128,7 +130,7 @@ export default function NavTabs({changeTab,currentTab}) {
                                 Settings
                               </a>
                             )}
-                          </Menu.Item>
+                          </Menu.Item> */}
                           <Menu.Item>
                             {({ active }) => (
                               <a
@@ -137,6 +139,7 @@ export default function NavTabs({changeTab,currentTab}) {
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
+                                onClick={()=>logout()}
                               >
                                 Sign out
                               </a>

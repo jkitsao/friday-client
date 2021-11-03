@@ -99,7 +99,7 @@ function Glass() {
                 <div className="text-white absolute right-2">
                   <svg
                     className="w-10 h-10"
-                    fill="currentColor"
+                    fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +124,7 @@ function Glass() {
                 <div className="text-white absolute right-2">
                   <svg
                     className="w-10 h-10"
-                    fill="currentColor"
+                    fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
