@@ -7,7 +7,7 @@ import Content_Tab from './Content_Tab'
 import MediaPage from './ApiPage'
 import { Redirect } from 'react-router'
 import Gallery from './gallery/Gallery'
-
+import {motion} from 'framer-motion'
 export default function Content_Page({project}) {
   const [currentTab,setCurrentTab]=useState('content-model')
   // tabs content-model,content

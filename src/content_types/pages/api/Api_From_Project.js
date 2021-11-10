@@ -36,8 +36,8 @@ function Api_From_Project({ project }) {
     <>
       {isLoading && <LoadingComp />}
       {selected && !isLoading && (
-        <section>
-          <div className="lg:w-1/2 mx-auto">
+        <section className="lg:w-5/6 mx-auto ">
+          <div className="lg:w-5/6 mx-auto mb-4 cursor-pointer">
             <Selector
               project={project}
               models={models}

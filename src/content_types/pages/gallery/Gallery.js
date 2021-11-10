@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import api from "../../../api/axios";
 import { useUser } from "../../../firebase/useUser";
 import ImageComp from "./ImageComp";
-
+import { motion } from "framer-motion";
 function Gallery() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,9 +28,12 @@ function Gallery() {
     }
   }, [user]);
   return (
-    <div>
+    <motion.div
+      initial={{ x: -100, opacity: 0.3 }}
+      animate={{ x: 0, opacity: 1 }}
+    >
       <ImageComp images={images} />
-    </div>
+    </motion.div>
   );
 }
 

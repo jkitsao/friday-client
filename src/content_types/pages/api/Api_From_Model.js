@@ -5,6 +5,7 @@ import Page_Heading from "./Page_Heading";
 import LoadingComp from "../../../components/LoadingComp";
 import api from "../../../api/axios";
 import { baseURL } from "../../../api/axios";
+import { motion } from "framer-motion";
 import Mid_Docs from "./Mid_Docs";
 function Api_From_Model({ model }) {
   const { name, project_id } = model;
@@ -27,18 +28,20 @@ function Api_From_Model({ model }) {
   };
 
   return (
-    <section className="lg:w-5/6 mx-auto py-5">
+    <section className="lg:w-5/6 mx-auto  shadow-lg">
       <Page_Heading
         baseApi={baseApi}
         fetchData={fetchData}
         name={name}
         project_id={project_id}
       />
-      <Mid_Docs name={name} id={project_id} />
+      {/* <Mid_Docs name={name} id={project_id} /> */}
       <div
-        className="h-full mt-2 m-2 border p-5 bg-white overflow-y-auto "
+        className={`h-full  ${
+          data && "p-5"
+        } bg-white border-b border-green-200 overflow-y-auto `}
         style={{
-          minHeight: "40vh",
+          minHeight: "50vh",
           maxHeight: "65vh",
         }}
       >
@@ -48,10 +51,29 @@ function Api_From_Model({ model }) {
           </div>
         )}
         {data && (
-          <div>
-            {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+          <motion.div
+            initial={{ y: -100, opacity: 0.3 }}
+            animate={{ y: 0, opacity: 1 }}
+          >
             <ReactJson src={data} name={false} enableClipboard={false} />
-          </div>
+          </motion.div>
+        )}
+        {!data && (
+          <motion.div
+            initial={{ y: -1000, opacity: 0.3 }}
+            animate={{ y: 0, opacity: 1 }}
+          >
+            {/* <ReactJson src={data} name={false} enableClipboard={false} /> */}
+            <motion.div
+              initial={{ y: -1000, opacity: 0.3 }}
+              animate={{ y: 0, opacity: 1 }}
+            >
+              <img
+                src="https://cdn.dribbble.com/users/20368/screenshots/3953268/api_anim.gif"
+                className="object-cover w-full h-full"
+              />
+            </motion.div>
+          </motion.div>
         )}
       </div>
     </section>

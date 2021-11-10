@@ -1,16 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment,useState } from 'react'
-import {
-  BriefcaseIcon,
-  CalendarIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  CurrencyDollarIcon,
-  LinkIcon,
-  LocationMarkerIcon,
-  PencilIcon,
-} from '@heroicons/react/solid'
-import { Menu, Transition } from '@headlessui/react'
+import {motion} from 'framer-motion'
 import Content_modal from './comp/Content_modal'
 import Models from './comp/Models'
 import Head from '../../components/seo/Head'
@@ -18,7 +8,10 @@ import Head from '../../components/seo/Head'
 export default function Content_model_page({project}) {
   const [refresh,setRefresh]=useState(false)
   return (
-      <div>
+      <motion.div
+      initial={{ x: -100,opacity:0.3 }}
+      animate={{ x: 0,opacity:1 }}
+      >
 <Head
         title={` ${project?.project_name}`}
         name={` ${project?.project_name}`}
@@ -54,6 +47,6 @@ export default function Content_model_page({project}) {
     <div className='py-5'>
       <Models project={project} refresh={refresh} setRefresh={setRefresh}/>
     </div>
-      </div>
+      </motion.div>
   )
 }

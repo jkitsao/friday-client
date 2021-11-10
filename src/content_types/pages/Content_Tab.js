@@ -3,6 +3,7 @@ import axios from "axios";
 import Content_Tab_Header from "./comp/Content_Tab_Header";
 import Empty_State from "../../components/Empty_State";
 import BreadCrumb from "../../components/BreadCrumb";
+import { motion } from "framer-motion";
 import api from "../../api/axios";
 function Content_Tab({ project, model }) {
   const [models, setModels] = useState([]);
@@ -38,7 +39,10 @@ function Content_Tab({ project, model }) {
     },
   ];
   return (
-    <div>
+    <motion.div
+      initial={{ x: -100, opacity: 0.3 }}
+      animate={{ x: 0, opacity: 1 }}
+    >
       {/* <BreadCrumb links={links} /> */}
       <section>
         {fetchingModels ? (
@@ -77,7 +81,7 @@ function Content_Tab({ project, model }) {
           </div>
         )}
       </section>
-    </div>
+    </motion.div>
   );
   // return <div>{JSON.stringify(project)}</div>;
 }

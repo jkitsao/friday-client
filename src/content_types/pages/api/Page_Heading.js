@@ -2,7 +2,7 @@
 import React, { Fragment } from "react";
 import { Tooltip } from "@chakra-ui/react";
 import { Code } from "@chakra-ui/react";
-import { ChevronDownIcon, PencilIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, PaperAirplaneIcon } from "@heroicons/react/solid";
 import { Menu, Transition } from "@headlessui/react";
 import { useClipboard } from "@chakra-ui/react";
 
@@ -14,15 +14,22 @@ export default function Page_Heading({ baseApi, fetchData }) {
   const [value, setValue] = React.useState(baseApi);
   const { hasCopied, onCopy } = useClipboard(value);
   return (
-    <div className="lg:flex lg:items-center  p-2 lg:justify-around">
+    <div className="lg:flex lg:items-center  lg:justify-around border bg-gray-900 rounded-t-md  p-3 p">
       <div className="flex-1 min-w-0">
-        <h2 className="text-2xl font-bold leading-7 text-gray-800 sm:text-3xl sm:truncate">
+        <h2 className="text-2xl font-semibold leading-7 text-gray-100 sm:text-3xl sm:truncate">
           Api playground
         </h2>
-        <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
-          <div className="mt-4 flex items-center text-sm rounded-md font-normal text-white py-2 px-2 bg-gray-200">
+        <div className="mt-1 flex  items-end sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+          <div className="mt-4 flex items-center text-sm rounded-md font-normal text-white py-2 px-4 shadow-sm bg-gray-400">
             {/* {baseApi} */}
-            <Code colorScheme="yellow" children={baseApi} paddingX="2" />
+            <Code
+              // colorScheme={`${hasCopied ? "green" : "yellow"}`}
+              colorScheme="green"
+              children={baseApi}
+              transition="all"
+              transitionDuration="150"
+              paddingX="2"
+            />
             <span
               onClick={onCopy}
               className={`px-3 py-1 cursor-pointer text-xs font-normal transition-all duration-100 ml-3 rounded-md  ${
@@ -34,23 +41,22 @@ export default function Page_Heading({ baseApi, fetchData }) {
               {hasCopied ? "Copied" : "Copy"}
             </span>
           </div>
+          <span className="hidden sm:block">
+            <button
+              type="button"
+              onClick={() => fetchData()}
+              className="inline-flex items-center px-4 py-3 rounded-md shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-200"
+            >
+              <PaperAirplaneIcon
+                className="-ml-1 mr-2 h-5 w-5 text-white"
+                aria-hidden="true"
+              />
+              Make a request
+            </button>
+          </span>
         </div>
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
-        <span className="hidden sm:block">
-          <button
-            type="button"
-            onClick={() => fetchData()}
-            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            {/* <PencilIcon
-              className="-ml-1 mr-2 h-5 w-5 text-gray-500"
-              aria-hidden="true"
-            /> */}
-            Make a request
-          </button>
-        </span>
-
         {/* Dropdown */}
         <Menu as="span" className="ml-3 relative sm:hidden">
           <Menu.Button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
