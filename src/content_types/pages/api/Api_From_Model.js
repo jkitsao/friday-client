@@ -6,6 +6,9 @@ import LoadingComp from "../../../components/LoadingComp";
 import api from "../../../api/axios";
 import { baseURL } from "../../../api/axios";
 import { motion } from "framer-motion";
+import loader from "../../../assets/loader.gif";
+import api_image from "../../../assets/api_image.gif";
+
 import Mid_Docs from "./Mid_Docs";
 function Api_From_Model({ model }) {
   const { name, project_id } = model;
@@ -42,12 +45,24 @@ function Api_From_Model({ model }) {
         } bg-white border-b border-green-200 overflow-y-auto `}
         style={{
           minHeight: "50vh",
-          maxHeight: "65vh",
+          maxHeight: "70vh",
         }}
       >
         {isLoading && (
-          <div className="h-full w-full flex justify-center items-center">
-            <LoadingComp />
+          <div
+            className="h-full w-full flex justify-center items-center"
+            style={{
+              minHeight: "50vh",
+              maxHeight: "70vh",
+            }}
+          >
+            {/* <LoadingComp /> */}
+            <motion.div
+              initial={{ y: -1000, opacity: 0.3 }}
+              animate={{ y: 0, opacity: 1 }}
+            >
+              <img src={loader} className="object-cover w-32 h-32 mx-auto " />
+            </motion.div>
           </div>
         )}
         {data && (
@@ -58,7 +73,7 @@ function Api_From_Model({ model }) {
             <ReactJson src={data} name={false} enableClipboard={false} />
           </motion.div>
         )}
-        {!data && (
+        {!data && !isLoading && (
           <motion.div
             initial={{ y: -1000, opacity: 0.3 }}
             animate={{ y: 0, opacity: 1 }}
@@ -69,8 +84,8 @@ function Api_From_Model({ model }) {
               animate={{ y: 0, opacity: 1 }}
             >
               <img
-                src="https://cdn.dribbble.com/users/20368/screenshots/3953268/api_anim.gif"
-                className="object-cover w-full h-full"
+                src={api_image}
+                className="object-cover lg:w-3/4 h-auto mx-auto lg:my-10 shadow-lg"
               />
             </motion.div>
           </motion.div>
