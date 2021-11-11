@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Unsplash from "../../components/unsplash/Unsplash";
 import { LinkIcon, CheckIcon } from "@heroicons/react/solid";
+import upload from "../../assets/upload.png";
 // import axios from "axios";
 import api from "../../api/axios";
 import {
@@ -15,13 +16,6 @@ import {
   Button,
   Input,
   Image,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
   useDisclosure,
   Spinner,
 } from "@chakra-ui/react";
@@ -48,7 +42,7 @@ function MediaElement({ field, content, setContent, fields }) {
         <span>{field?.name}</span>
       </div>
       {field.media_type === "unsplash" && (
-        <div className="p-3 border-2 border-dotted bg-gray-50">
+        <div className="p-3 border-2 border-dotted ">
           <div>
             <Unsplash setValue={setValue} value={value} />
           </div>
@@ -184,24 +178,20 @@ function CustomUpload({ value, setValue }) {
           ref={btnRef}
           onClick={onOpen}
           type="button"
-          style={{
-            color: "white",
-            border: "none",
-            maxWidth: "10rem",
-            backgroundColor: "gray",
-            borderRadius: "4px",
-            //   height: "25px",
-            padding: "0.7rem",
-          }}
-          // className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
-          upload image
+          <img
+            src={upload}
+            alt="upload image"
+            title="upload image"
+            className="w-28 h-28 object-cover shadow-md"
+          />
         </button>
       )}
       {value && (
         <div>
-          <Image
+          {/* <Image
             boxSize="100px"
             // ref={btnRef}
             onClick={onOpen}
@@ -209,6 +199,14 @@ function CustomUpload({ value, setValue }) {
             objectFit="cover"
             src={value.thumb}
             alt=""
+          /> */}
+          <img
+            src={value?.thumb}
+            className=" object-cover cursor-pointer"
+            style={{
+              width: "110px",
+              height: "110px",
+            }}
           />
         </div>
       )}

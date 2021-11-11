@@ -60,12 +60,13 @@ function Api_From_Model({ model }) {
             <motion.div
               initial={{ y: -1000, opacity: 0.3 }}
               animate={{ y: 0, opacity: 1 }}
+              className="h-full w-full flex justify-center items-center"
             >
-              <img src={loader} className="object-cover w-32 h-32 mx-auto " />
+              <img src={loader} className="object-cover w-64 h-64 mx-auto " />
             </motion.div>
           </div>
         )}
-        {data && (
+        {data && !isLoading && (
           <motion.div
             initial={{ y: -100, opacity: 0.3 }}
             animate={{ y: 0, opacity: 1 }}

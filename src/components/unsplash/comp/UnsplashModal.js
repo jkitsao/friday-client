@@ -15,7 +15,7 @@ import Search_comp from "./Search_comp";
 import { useState, useEffect } from "react";
 import Search_input from "./Search_input";
 import LoadingComp from "../../LoadingComp";
-import unsplash from "../../../assets/icons/unsplash.png";
+import unsplash from "../../../assets/unsplash.png";
 export default function UnsplashModal({ setValue, value }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [page, setPage] = useState(1);
@@ -39,19 +39,20 @@ export default function UnsplashModal({ setValue, value }) {
         className="border p-1"
         title="unsplash"
         type="button"
+        className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         {!value && (
           <img
             src={unsplash}
-            alt="unsplash image"
-            className="w-10 shadow-sm h-10 object-cover"
+            alt="unsplash images"
+            className="w-28 h-28 object-cover"
           />
         )}
         {value && (
           <img
             src={value.thumb}
             alt="unsplash image"
-            className="w-24 h-24 object-cover"
+            className="w-28 h-28 object-cover"
           />
         )}
       </button>
