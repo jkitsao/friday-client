@@ -34,7 +34,12 @@ function ModelFieldsRender({ model, setRefresh, refresh }) {
     <>
       {model && model.fields.length > 0 && (
         <div className=" lg:flex justify-evenly">
-          <div className="lg:w-1/2  bg-gray-50 shadow-md p-5 rounded-md">
+          <div
+            className="lg:w-1/2 overflow-y-auto bg-blue-50 shadow-md p-5 rounded-md"
+            style={{
+              maxHeight: "40rem",
+            }}
+          >
             {model?.fields &&
               model.fields.map((field, index) => (
                 <div
@@ -75,7 +80,12 @@ function ModelFieldsRender({ model, setRefresh, refresh }) {
                 </div>
               ))}
           </div>
-          <div className=" hidden lg:block lg:w-2/5 mx-2  bg-gray-50 shadow-md p-5 rounded-md">
+          <div
+            className=" hidden lg:block lg:w-2/5 mx-2  bg-green-50 shadow-md p-5 rounded-md sticky top-0"
+            style={{
+              maxHeight: "20rem",
+            }}
+          >
             {/* {JSON.stringify(data)} */}
             <ReactJson src={data} name={false} enableClipboard={true} />
           </div>

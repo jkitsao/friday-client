@@ -4,7 +4,7 @@ import Delete from "./comp/DeleteComp";
 
 function Media({ field, handleDeleteField }) {
   return (
-    <div className="p-2 my-3 hover:bg-white cursor-pointer border border-gray-700 rounded-sm relative">
+    <div className="p-2 my-3 bg-white cursor-pointer border border-gray-700 rounded-sm relative">
       <div className="flex items-center">
         <div className="p-1 mr-3">
           <img src={media} className="w-8 h-8 object-cover" />
