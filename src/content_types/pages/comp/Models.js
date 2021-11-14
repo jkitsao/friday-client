@@ -5,6 +5,9 @@ import api from "../../../api/axios";
 import { useToast } from "@chakra-ui/react";
 import LoadingComp from "../../../components/LoadingComp";
 import Empty_State from "../../../components/Empty_State";
+import model_icon from "../../../assets/icons/model_icon.png";
+import model_icon_2 from "../../../assets/icons/model_icon_2.png";
+
 /* This example requires Tailwind CSS v2.0+ */
 
 export default function Example({ project, refresh, setRefresh }) {
@@ -130,6 +133,7 @@ export default function Example({ project, refresh, setRefresh }) {
           <Empty_State
             title="create your first model"
             description="models that you create will appear here, models represent the content types you create"
+            icon={model_icon_2}
           />
         </div>
       )}

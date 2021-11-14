@@ -27,10 +27,15 @@ function ModelEntriesComp({
 
   return (
     <tr>
-      <td className="px-2 py-4 whitespace-nowrap">
+      <td className="px-2 py-4 whitespace-nowrap overflow-hidden truncate ">
         <div className="flex items-center">
           <div className="">
-            <div className="text-base text-center text-gray-900">
+            <div
+              className=""
+              style={{
+                maxWidth: "25rem",
+              }}
+            >
               <NewEntry
                 name={name}
                 field={field}

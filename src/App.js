@@ -16,11 +16,16 @@ import LandingPage from "./components/landingpage/LandingPage";
 import initFirebase from "./firebase/initFirebase";
 import { useUser } from "./firebase/useUser";
 import Payment from "./pages/Payment";
+import useGaTracker from "./components/tracking/useGaTracker";
 // import Head from ''
+import ReactGA from "react-ga";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import LoadingComp from "./components/LoadingComp";
 initFirebase();
+// useGaTracker();
+ReactGA.initialize("G-E7F7MKSG1P");
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 function App() {
   const { user, loadingState } = useUser();

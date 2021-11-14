@@ -42,7 +42,7 @@ function Api_From_Model({ model }) {
       <div
         className={`h-full  ${
           data && "p-5"
-        } bg-white border-b border-green-200 overflow-y-auto `}
+        }  bg-green-50 border-b border-green-200 overflow-y-auto `}
         style={{
           minHeight: "50vh",
           maxHeight: "70vh",
@@ -84,10 +84,10 @@ function Api_From_Model({ model }) {
               initial={{ y: -1000, opacity: 0.3 }}
               animate={{ y: 0, opacity: 1 }}
             >
-              <img
+              {/* <img
                 src={api_image}
                 className="object-cover lg:w-3/4 h-auto mx-auto lg:my-10 shadow-lg"
-              />
+              /> */}
             </motion.div>
           </motion.div>
         )}

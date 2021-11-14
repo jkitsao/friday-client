@@ -19,7 +19,7 @@ export default function Manage() {
         <Header refresh={refresh} setRefresh={setRefresh} name={user?.name} />
       </div>
       <div
-        className="border border-dashed mt-8 bg-gray-50"
+        className="border border-dashed mt-8 bg-blue-50"
         style={{
           minHeight: "60vh",
         }}

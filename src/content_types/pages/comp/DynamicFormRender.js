@@ -11,6 +11,7 @@ import api from "../../../api/axios";
 import { useToast, Spinner } from "@chakra-ui/react";
 import LoadingComp from "../../../components/LoadingComp";
 import ColorElement from "../../form_elements/ColorElement";
+import BeatLoader from "react-spinners/BeatLoader";
 // import { nanoid } from "nanoid";
 function DynamicFormRender({
   selected,
@@ -70,57 +71,69 @@ function DynamicFormRender({
   };
   return (
     <form className="w-full py-5" onSubmit={(e) => e.preventDefault()}>
-      {/* {JSON.stringify(fields)} */}
-      {!isLoading ? (
-        <div className="w-full ">
-          <section className="p-8 lg:w-3/4 xl:w-1/2  lg:mx-auto rounded-md shadow-lg bg-white">
-            {selected?.fields &&
-              selected?.fields.map((field, index) => (
-                <FormComp
-                  field={field}
-                  key={index}
-                  content={content}
-                  setContent={setContent}
-                  fields={fields}
-                />
-              ))}
-          </section>
-
-          <section
-            className="lg:w-3/4 xl:w-1/2 lg:mx-auto  my-3 sticky bottom-0 z-50"
-            style={{
-              marginBottom: 0,
-            }}
-          >
-            <button
-              className="px-3 rounded-lg py-5  flex justify-center items-center bg-green-900 font-semibold text-lg hover:bg-green-800 transition-all duration-100 text-white w-full h-full focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-green-500"
-              onClick={handleSubmitContent}
-              type="submit"
-              disabled={loading}
-            >
-              <span className="inline-flex justify-center items-center">
-                <svg
-                  className="w-6 h-6 mx-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+      <div>
+        {!isLoading ? (
+          <div className="w-full ">
+            <section className="p-8 lg:w-3/4 xl:w-1/2  lg:mx-auto rounded-md shadow-lg bg-white">
+              {selected?.fields &&
+                selected?.fields.map((field, index) => (
+                  <FormComp
+                    field={field}
+                    key={index}
+                    content={content}
+                    setContent={setContent}
+                    fields={fields}
                   />
-                </svg>
-                {!loading ? "save" : <Spinner />}
-              </span>
-            </button>
-          </section>
-        </div>
-      ) : (
-        <LoadingComp />
-      )}
+                ))}
+            </section>
+
+            <section
+              className="lg:w-3/4 xl:w-1/2 lg:mx-auto  my-3 sticky bottom-0 z-50"
+              style={{
+                marginBottom: 0,
+              }}
+            >
+              <button
+                className={`px-3 rounded-sm py-5  flex justify-center items-center ${
+                  loading ? "bg-green-50" : "bg-green-900"
+                } font-semibold text-lg ${
+                  !loading && "hover:bg-green-800"
+                } transition-all duration-100 text-white w-full h-full focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-green-500`}
+                onClick={handleSubmitContent}
+                type="submit"
+                disabled={loading}
+              >
+                {!loading ? (
+                  <span className="inline-flex justify-center items-center">
+                    <svg
+                      className="w-6 h-6 mx-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+                      />
+                    </svg>
+                    {/* {!loading ? "save" : <Spinner />} */}
+                    save
+                  </span>
+                ) : (
+                  <span>
+                    <BeatLoader loading={loading} size={15} />
+                  </span>
+                )}
+              </button>
+            </section>
+          </div>
+        ) : (
+          <LoadingComp />
+        )}
+      </div>
     </form>
   );
 }

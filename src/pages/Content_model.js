@@ -35,7 +35,7 @@ function Project() {
   // console.log(data);
   return (
     <>
-      <div className="lg:mx-auto h-full">
+      <div className="lg:mx-auto ">
         <ModelsPage
           model={data}
           setRefresh={setRefresh}

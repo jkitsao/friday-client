@@ -110,18 +110,21 @@ function NewEntry({
 
           <DrawerBody>
             {/* <Input placeholder="Type here..." /> */}
-            <div className="xl:w-5/6 lg:mx-auto">
-              <DynamicFormRender
-                selected={selected}
-                content={content}
-                setContent={setContent}
-                data={data}
-                fields={field}
-                refresh={refresh}
-                setRefresh={setRefresh}
-                onClose={onClose}
-                isNew={isNew}
-              />
+            <div>
+              <div className="xl:w-5/6 lg:mx-auto">
+                <DynamicFormRender
+                  selected={selected}
+                  content={content}
+                  setContent={setContent}
+                  data={data}
+                  fields={field}
+                  refresh={refresh}
+                  setRefresh={setRefresh}
+                  onClose={onClose}
+                  isNew={isNew}
+                />
+              </div>
+              <div className=" h-3.5 bg-white fixed bottom-0 w-full "></div>
             </div>
           </DrawerBody>
         </DrawerContent>

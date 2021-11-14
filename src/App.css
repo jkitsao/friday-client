@@ -3,10 +3,24 @@
   border: 1px solid #ccc;
 }
 .editor-class {
-  background-color:lightgray;
+  background-color: lightgray;
   padding: 1rem;
   border: 1px solid #ccc;
 }
 .toolbar-class {
   border: 1px solid #ccc;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scoll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scoll-bar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scoll-bar > :last-child {
+  margin-right: 30px;
 }

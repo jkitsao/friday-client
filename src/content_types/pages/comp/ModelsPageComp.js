@@ -60,7 +60,7 @@ export default function ModelsPageComp({
       </div>
       <hr />
       {/* content component goes here */}
-      <div className="py-5 bg-gray-300 min-h-screen border-t-2 border-gray-500 overflow-y-auto">
+      <div className="py-5  min-h-screen border-t-2 border-gray-500 overflow-y-auto">
         {!loading && (
           <ModelFieldsRender
             model={model}

@@ -6,6 +6,7 @@ import Project from "./Project";
 import { useToast, Spinner, addPrefix } from "@chakra-ui/react";
 import LoadingComp from "../../../components/LoadingComp";
 import Empty_State from "../../../components/Empty_State";
+import empty_project from "../../../assets/icons/empty_project.png";
 export default function Projects({ refresh, setRefresh }) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -96,6 +97,7 @@ export default function Projects({ refresh, setRefresh }) {
           <Empty_State
             title="Create your first project"
             description="Projects you create will appear here."
+            icon={empty_project}
           />
         </div>
       )}

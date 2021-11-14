@@ -3,10 +3,10 @@ import date from "../../assets/elements/date.png";
 import Delete from "./comp/DeleteComp";
 function Date({ field, handleDeleteField }) {
   return (
-    <div className="p-2 my-3 hover:bg-gray-50 cursor-pointer border-2 relative rounded-md border-l">
+    <div className="p-2 my-3 hover:bg-white cursor-pointer border border-gray-700 rounded-sm relative">
       <div className="flex items-center">
         <div className="p-1 mr-3">
-          <img src={date} className="w-8 h-8 object-cover opacity-50" />
+          <img src={date} className="w-8 h-8 object-cover " />
         </div>
         <div className="flex items-center">
           <div className="font-medium py-2 px-1 ">{field?.name}</div>

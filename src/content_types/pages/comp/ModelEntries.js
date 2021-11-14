@@ -4,6 +4,7 @@ import api from "../../../api/axios";
 import ModelEntriesComp from "./ModelEntriesComp";
 import LoadingComp from "../../../components/LoadingComp";
 import Empty_State from "../../../components/Empty_State";
+import content_icon from "../../../assets/icons/content_icon.png";
 function ModelEntries({
   selected,
   content,
@@ -48,12 +49,17 @@ function ModelEntries({
       console.error(err);
     }
   };
+  console.log({ fields });
+  console.log({ loading });
 
   // useEffect(() => {
   //   fetchEntries();
   // }, [selected, refresh]);
   return (
     <div className=" p-5 min-h-screen h-full">
+      {/* {JSON.stringify(fields?.content)} */}
+
+      {/* show loading indicator */}
       {loading && (
         <div
           className="w-full flex justify-center items-center"
@@ -65,6 +71,19 @@ function ModelEntries({
           <LoadingComp />
         </div>
       )}
+      {/* if fields is not available */}
+      {(!loading && fields.length < 1) ||
+        (fields?.content?.length < 1 && (
+          <div>
+            <Empty_State
+              title="Add your first entry"
+              description="Entries/content you add will appear here"
+              icon={content_icon}
+            />
+          </div>
+        ))}
+
+      {/* show model entries */}
       {!loading && fields.content && fields?.content.length > 0 && (
         <ModelEntriesTable
           fields={fields}
@@ -77,11 +96,6 @@ function ModelEntries({
           isLoading={loading}
           deleteEntry={deleteEntry}
         />
-      )}
-      {!loading && fields?.content?.length < 1 && (
-        <div>
-          <Empty_State title="Add your fisrt entry" description="" />
-        </div>
       )}
     </div>
   );

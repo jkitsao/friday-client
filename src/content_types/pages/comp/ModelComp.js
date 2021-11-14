@@ -15,7 +15,7 @@ function ModelComp({ model, deleteModel }) {
           maxWidth: "5rem",
         }}
       >
-        <div className="flex items-center">
+        <div className="flex items-center max-w-sm mx-2.5 overflow-x-auto scoll-bar">
           <div className="ml-4">
             <div className="text-base font-medium text-gray-900">
               <Link
