@@ -5,6 +5,9 @@ import { Code } from "@chakra-ui/react";
 import { RefreshIcon, PaperAirplaneIcon } from "@heroicons/react/solid";
 import { Menu, Transition } from "@headlessui/react";
 import { useClipboard } from "@chakra-ui/react";
+import { Link } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+// import { baseURL } from "../../../api/axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -17,21 +20,25 @@ export default function Page_Heading({ baseApi, fetchData }) {
     <div className="lg:flex lg:items-center  lg:justify-around border bg-gray-900 rounded-t-md  p-3 p">
       <div className="flex-1 min-w-0">
         <h2 className="text-2xl font-semibold leading-7 text-gray-100 sm:text-3xl sm:truncate">
-          Api playground
+          Api Endpoint
         </h2>
         <div className="mt-1 flex  items-end sm:flex-row sm:mt-0 sm:space-x-6">
-          <div className="mt-4 lg:flex items-center text-sm rounded-md font-normal text-white py-2 px-4 shadow-sm bg-gray-400 ">
+          <div className="mt-4 lg:flex items-center text-base rounded-md font-normal font-mono text-green-200 py-2 px-4 shadow-sm bg-gray-700 ">
             {/* {baseApi} */}
-            <Code
-              // colorScheme={`${hasCopied ? "green" : "yellow"}`}
-              colorScheme="green"
-              children={baseApi}
-              transition="all"
-              transitionDuration="150"
-              paddingX="2"
-              overflowX="auto"
-              maxW="xl"
-            />
+            <Link href={baseApi} isExternal>
+              {/* <Code
+                // colorScheme={`${hasCopied ? "green" : "yellow"}`}
+                colorScheme="green"
+                children={baseApi}
+                transition="all"
+                transitionDuration="150"
+                paddingX="2"
+                overflowX="auto"
+                maxW="xl"
+              /> */}
+              {baseApi}
+              <ExternalLinkIcon mx="2px" color="white" marginX="1.5" />
+            </Link>
             <span
               onClick={onCopy}
               className={`px-3 py-1 cursor-pointer text-xs font-normal transition-all duration-100 ml-3 overflow-x-auto rounded-md  ${

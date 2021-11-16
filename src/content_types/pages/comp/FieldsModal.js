@@ -33,6 +33,7 @@ function FieldsModal({ fields, setFields, model, setRefresh, refresh }) {
   const updateFields = async () => {
     // alert(JSON.stringify(currentField));
     if (currentField && currentField.name && model) {
+      setLoading(true);
       try {
         const res = await api.post("/models/field", {
           field: currentField,
@@ -72,32 +73,18 @@ function FieldsModal({ fields, setFields, model, setRefresh, refresh }) {
               fieldOpen={fieldOpen}
               fields={fields}
               setFields={setFields}
-              // mediaType={mediaType}
-              // setMediaType={setMediaType}
-              // radioValue={radioValue}
-              // setRadioValue={setRadioValue}
               currentField={currentField}
               setCurrentField={setCurrentField}
-              // textField={textField}
-              // setTextField={setTextField}
-              // numbField={numbField}
-              // setNumbField={setNumbField}
-              // mediaField={mediaField}
-              // setMediaField={setMediaField}
-              // dateField={dateField}
-              // setDateField={setDateField}
-              // richTextField={richTextField}
-              // setRichTextField={setRichTextField}
-              // colorField={colorField}
-              // setColorField={setColorField}
-              // colorType={colorType}
-              // setColorType={setColorType}
-              // handleDeleteField={handleDeleteField}
             />
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={updateFields}>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={updateFields}
+              disabled={loading}
+            >
               {!loading ? "add" : <Spinner />}
             </Button>
             <Button

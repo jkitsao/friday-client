@@ -5,6 +5,8 @@ import ModelFieldsRender from "./ModelFieldsRender";
 import Head from "../../../components/seo/Head";
 import { Skeleton, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
 export default function ModelsPageComp({
   model,
   setRefresh,
@@ -14,7 +16,10 @@ export default function ModelsPageComp({
   const [fields, setFields] = useState([]);
 
   return (
-    <div>
+    <motion.div
+      initial={{ x: -100, opacity: 0.3 }}
+      animate={{ x: 0, opacity: 1 }}
+    >
       <Head
         title={`model - ${model?.name}`}
         name={model?.name}
@@ -70,7 +75,7 @@ export default function ModelsPageComp({
         )}
         {loading && <LoadingSkeleton />}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

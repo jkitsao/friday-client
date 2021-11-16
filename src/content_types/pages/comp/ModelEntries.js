@@ -49,8 +49,8 @@ function ModelEntries({
       console.error(err);
     }
   };
-  console.log({ fields });
-  console.log({ loading });
+  // console.log({ fields });
+  // console.log({ loading });
 
   // useEffect(() => {
   //   fetchEntries();
@@ -72,8 +72,8 @@ function ModelEntries({
         </div>
       )}
       {/* if fields is not available */}
-      {(!loading && fields.length < 1) ||
-        (fields?.content?.length < 1 && (
+      {(!loading && !fields < 1) ||
+        (fields?.content && fields?.content.length < 1 && (
           <div>
             <Empty_State
               title="Add your first entry"

@@ -30,13 +30,9 @@ function Project({ project, handleDeleteProject }) {
           <div className="flex w-full  items-center">
             <img src={create} className="w-16 h-16 object-cover " />
             <div
-              className={`text-lg font-semibold transition-all duration-200 text-gray-800 ${
+              className={`text-lg font-semibold transition-all leading-tight truncate duration-200 text-gray-800 ${
                 hover ? "underline text-blue-600" : ""
               }`}
-              style={{
-                transition: "all",
-                transitionDuration: "150",
-              }}
             >
               {project?.project_name}
               <div className="text-xs font-semibold text-gray-600">

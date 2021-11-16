@@ -2,6 +2,7 @@ import React from "react";
 import { Input } from "@chakra-ui/react";
 import text from "../../assets/elements/text.png";
 import Delete from "./comp/DeleteComp";
+import Badge_Comp from "./comp/Badge";
 
 function Text({ field, handleDeleteField }) {
   return (
@@ -13,7 +14,9 @@ function Text({ field, handleDeleteField }) {
         <div className="flex items-center">
           <div className="font-medium py-2 px-1 ">{field?.name}</div>
           <div className="ml-5 text-green-600 underline">
-            {field?.text_type} {field?.type}
+            {/* {field?.text_type} {field?.type} */}
+            <Badge_Comp name={field?.text_type} />
+            <Badge_Comp name={field?.type} />
           </div>
         </div>
       </div>

@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-// import axios from "axios";
 import api from "../api/axios";
-import useSWR, { trigger } from "swr";
-import Project_page from "../user_components/project";
 import ModelsPage from "../content_types/pages/ModelsPage";
-import Layout from "../components/layout";
 import { useParams } from "react-router-dom";
-import Unsplash from "../components/unsplash/Unsplash";
+import { motion } from "framer-motion";
+
+// import axios from "axios";
+// import useSWR, { trigger } from "swr";
+// import Project_page from "../user_components/project";
+// import Layout from "../components/layout";
+// import Unsplash from "../components/unsplash/Unsplash";
 
 function Project() {
   let { model, project_id } = useParams();
@@ -35,14 +37,18 @@ function Project() {
   // console.log(data);
   return (
     <>
-      <div className="lg:mx-auto ">
+      <motion.div
+        initial={{ x: -100, opacity: 0.3 }}
+        animate={{ x: 0, opacity: 1 }}
+        className="lg:mx-auto"
+      >
         <ModelsPage
           model={data}
           setRefresh={setRefresh}
           refresh={refresh}
           loading={loading}
         />
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import color from "../../assets/elements/color.png";
+import Badge_Comp from "./comp/Badge";
+import Badge from "./comp/Badge";
 import Delete from "./comp/DeleteComp";
 
 function Color({ field, handleDeleteField }) {
@@ -11,7 +13,10 @@ function Color({ field, handleDeleteField }) {
         </div>
         <div className="flex items-center">
           <div className="font-medium py-2 px-1 ">{field?.name}</div>
-          <div className="ml-5 text-green-600 underline">{field?.type}</div>
+          <div className="ml-5 text-green-600 underline">
+            {/* <Badge name={field?.type} /> */}
+            <Badge_Comp name={field?.type} />
+          </div>
         </div>
       </div>
       <div

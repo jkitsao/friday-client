@@ -1,5 +1,6 @@
 import React from "react";
 import richtext from "../../assets/elements/richtext.svg";
+import Badge_Comp from "./comp/Badge";
 import Delete from "./comp/DeleteComp";
 
 function RichText({ field, handleDeleteField }) {
@@ -11,7 +12,9 @@ function RichText({ field, handleDeleteField }) {
         </div>
         <div className="flex items-center">
           <div className="font-medium py-2 px-1 ">{field?.name}</div>
-          <div className="ml-5 text-green-600 underline">{field?.type}</div>
+          <div className="ml-5 text-green-600 underline">
+            <Badge_Comp name={field?.type} />
+          </div>
         </div>
       </div>
       <div

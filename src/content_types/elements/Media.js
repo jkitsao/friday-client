@@ -1,5 +1,6 @@
 import React from "react";
 import media from "../../assets/elements/media.png";
+import Badge_Comp from "./comp/Badge";
 import Delete from "./comp/DeleteComp";
 
 function Media({ field, handleDeleteField }) {
@@ -11,8 +12,17 @@ function Media({ field, handleDeleteField }) {
         </div>
         <div className="flex items-center">
           <div className="font-medium py-2 px-1 ">{field?.name}</div>
-          <div className="ml-5 text-green-600 underline">
-            {field?.type} ({field?.media_type})
+          <div className="ml-5 text-green-600 underline flex">
+            {/* {field?.type} ({field?.media_type}) */}
+            <Badge_Comp name={field?.type} />
+            <Badge_Comp
+              name={
+                field?.media_type === "custom"
+                  ? "custom upload"
+                  : field?.media_type
+              }
+              color="blue"
+            />
           </div>
         </div>
         {/* {JSON.stringify(field)} */}
