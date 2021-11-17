@@ -13,15 +13,17 @@ import { baseURL } from "../../../api/axios";
 function Mid_Docs({ name, id, url }) {
   return (
     <div className="bg-white text-gray-700 m-2">
-      {/* <div className="py-3">
-        <span className=" text-lg font-semibold">Api format</span>
-      </div> */}
       <Accordion allowToggle>
         <AccordionItem>
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left" fontWeight="semibold">
                 <div className=" flex text-center items-center transition-all duration-150">
+                  <div className="">
+                    <span className="mx-2 text-base font-semibold">
+                      Api format:
+                    </span>
+                  </div>
                   {/* url tooltip */}
                   <Tooltip label="base url" aria-label="A tooltip">
                     <span className="text-base bg-red-50 font-normal hover:bg-gray-900 rounded px-2 py-1 text-red-600  hover:text-red-300 mx-1">
