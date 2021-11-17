@@ -21,7 +21,7 @@ export default function Manage() {
       <div
         className="border border-dashed mt-8 bg-blue-50"
         style={{
-          minHeight: "60vh",
+          minHeight: "70vh",
         }}
       >
         <Projects refresh={refresh} setRefresh={setRefresh} />

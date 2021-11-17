@@ -38,7 +38,7 @@ function Api_From_Model({ model }) {
         name={name}
         project_id={project_id}
       />
-      {/* <Mid_Docs name={name} id={project_id} /> */}
+      <Mid_Docs name={name} id={project_id} url={baseURL} />
       <div
         className={`h-full  ${
           data && "p-5"

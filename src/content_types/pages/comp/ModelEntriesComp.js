@@ -86,11 +86,11 @@ export function DeleteComp({
   return (
     <>
       <button
-        className="p-3 inline-flex text-xs rounded-full hover:bg-gray-200 opacity-60 hover:opacity-95 text-red-800"
+        className="p-2 inline-flex text-xs rounded-full hover:bg-gray-200 opacity-60 hover:opacity-95 text-red-800"
         onClick={() => setOpen(true)}
       >
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
