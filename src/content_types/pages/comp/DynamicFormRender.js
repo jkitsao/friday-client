@@ -95,7 +95,7 @@ function DynamicFormRender({
             >
               <button
                 className={`px-3 rounded-sm py-5  flex justify-center items-center ${
-                  loading ? "bg-green-50" : "bg-green-900"
+                  loading ? "bg-green-300" : "bg-green-900"
                 } font-semibold text-lg ${
                   !loading && "hover:bg-green-800"
                 } transition-all duration-100 text-white w-full h-full focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-green-500`}

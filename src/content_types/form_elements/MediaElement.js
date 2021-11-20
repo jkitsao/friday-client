@@ -191,18 +191,10 @@ function CustomUpload({ value, setValue }) {
       )}
       {value && (
         <div>
-          {/* <Image
-            boxSize="100px"
-            // ref={btnRef}
-            onClick={onOpen}
-            cursor="pointer"
-            objectFit="cover"
-            src={value.thumb}
-            alt=""
-          /> */}
           <img
             src={value?.thumb}
             className=" object-cover cursor-pointer"
+            onClick={onOpen}
             style={{
               width: "110px",
               height: "110px",
@@ -215,34 +207,38 @@ function CustomUpload({ value, setValue }) {
         <ModalContent>
           <ModalCloseButton color="gry.700" />
           <ModalHeader textColor="gray.700">
-            <div className="flex w-full justify-center items-center h-full">
-              <span>
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  />
-                </svg>
-              </span>
-              <span>upload image</span>
-            </div>
+            {!value && (
+              <div className="flex w-full justify-center items-center h-full">
+                <span>
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                    />
+                  </svg>
+                </span>
+                <span>upload image</span>
+              </div>
+            )}
           </ModalHeader>
 
           <ModalBody bgColor="gray.50 relative">
-            <form className="py-8 ">
+            <form className=" ">
               {/* <div className="fixed w-full h-full bg-gray-900  opacity-70"></div> */}
               <div className="grid grid-cols-1 space-y-2">
-                {/* <label className="text-sm font-bold  tracking-wide">
-                  screenshot/image
-                </label> */}
+                {value && (
+                  <div className=" font-semibold  tracking-wide">
+                    {value?.id}
+                  </div>
+                )}
                 <div className="flex items-center justify-center w-full">
                   <label
                     className={`flex flex-col rounded-lg ${
@@ -291,7 +287,7 @@ function CustomUpload({ value, setValue }) {
                               <span className="">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
-                                  className="h-6 w-6 cursor-pointer"
+                                  className="h-5 w-5 cursor-pointer"
                                   fill="none"
                                   viewBox="0 0 24 24"
                                   stroke="currentColor"
@@ -315,7 +311,7 @@ function CustomUpload({ value, setValue }) {
                               <span className="">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
-                                  className="h-6 w-6 cursor-pointer"
+                                  className="h-5 w-5 cursor-pointer"
                                   fill="none"
                                   viewBox="0 0 24 24"
                                   stroke="currentColor"
@@ -343,14 +339,16 @@ function CustomUpload({ value, setValue }) {
             <Button variant="ghost" colorScheme="red" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button
-              colorScheme="blue"
-              type="button"
-              onClick={test}
-              disabled={uploadingImg}
-            >
-              {uploadingImg ? <Spinner /> : " Publish image"}
-            </Button>
+            {!value && (
+              <Button
+                colorScheme="blue"
+                type="button"
+                onClick={test}
+                disabled={uploadingImg}
+              >
+                {uploadingImg ? <Spinner /> : " Publish image"}
+              </Button>
+            )}
           </ModalFooter>
         </ModalContent>
       </Modal>

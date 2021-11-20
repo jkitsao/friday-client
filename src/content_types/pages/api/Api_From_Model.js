@@ -12,7 +12,7 @@ import api_image from "../../../assets/api_image.gif";
 import Mid_Docs from "./Mid_Docs";
 function Api_From_Model({ model }) {
   const { name, project_id } = model;
-  const baseApi = ` ${baseURL}/${project_id}/${name}`;
+  const baseApi = ` ${baseURL}/${model.project_id}/${model.name}`;
   const [data, setData] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
   //   const [api, setApi] = useState(baseApi);
@@ -26,9 +26,15 @@ function Api_From_Model({ model }) {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
+      // console.log({ error });
+      setData(error?.response?.data);
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (project_id && name) fetchData();
+  }, [model]);
 
   return (
     <section className="lg:w-5/6 mx-auto  shadow-lg">
@@ -42,7 +48,7 @@ function Api_From_Model({ model }) {
       <div
         className={`h-full  ${
           data && "p-5"
-        }  bg-green-50 border-b border-green-200 overflow-y-auto `}
+        }  border-b-2 border-l-2 border-dashed border-gray-200 border-t-0  overflow-y-auto `}
         style={{
           minHeight: "50vh",
           maxHeight: "70vh",
@@ -71,7 +77,8 @@ function Api_From_Model({ model }) {
             initial={{ y: -100, opacity: 0.3 }}
             animate={{ y: 0, opacity: 1 }}
           >
-            <ReactJson src={data} name={false} enableClipboard={false} />
+            <ReactJson src={data} name={false} enableClipboard />
+            {/* {JSON.stringify(data)} */}
           </motion.div>
         )}
         {!data && !isLoading && (
