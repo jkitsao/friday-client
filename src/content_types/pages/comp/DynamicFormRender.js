@@ -55,7 +55,7 @@ function DynamicFormRender({
         status: "success",
         duration: 2000,
         isClosable: true,
-        position: "top",
+        position: "bottom-left",
       });
     } catch (err) {
       setLoading(false);

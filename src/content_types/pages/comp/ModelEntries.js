@@ -16,26 +16,6 @@ function ModelEntries({
   loading,
   setLoading,
 }) {
-  // const [fields, setFields] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const fetchEntries = async () => {
-  //   setIsLoading(true);
-  //   try {
-  //     const res = await api.get("/content", {
-  //       params: {
-  //         model_name: selected?.name,
-  //         project_id: selected?.project_id,
-  //       },
-  //     });
-  //     setFields(res.data.content);
-  //     // setContent(res.data.content.content);
-  //     setIsLoading(false);
-  //   } catch (err) {
-  //     setIsLoading(false);
-  //     setFields([]);
-  //     console.error(err);
-  //   }
-  // };
   const deleteEntry = async (entryId) => {
     setLoading(true);
     try {

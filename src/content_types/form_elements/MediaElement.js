@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Unsplash from "../../components/unsplash/Unsplash";
 import { LinkIcon, CheckIcon } from "@heroicons/react/solid";
 import upload from "../../assets/upload.png";
+import { useToast } from "@chakra-ui/react";
+
 // import axios from "axios";
 import api from "../../api/axios";
 import {
@@ -117,17 +119,10 @@ function CustomUpload({ value, setValue }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const [preview, setPreview] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(undefined);
   const [uploadingImg, setUploadingImg] = useState(false);
-  // const [desc, setDesc] = useState(value ? value.description : "");
-  // const [errors, setErrors] = useState(false);
-  // // const [thumb, setthumb] = useState(null);
-  // const [title, setTitle] = useState(value ? value.title : "");
-
-  let data = {
-    thumb: "",
-    id: "",
-  };
+  const [file, setFile] = useState({});
+  const toast = useToast();
 
   //handle image upload
 
@@ -135,17 +130,30 @@ function CustomUpload({ value, setValue }) {
     e.preventDefault();
     let reader = new FileReader();
     const file = e.target.files[0];
+    // console.log({ file });
+    if (!file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+      toast({
+        title: "error",
+        description: "unsupported image format",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
     setImage(file);
     reader.onloadend = () => {
       setPreview(reader.result);
+      // setFile(file);
     };
 
     reader.readAsDataURL(file);
   };
   //cancel image upload
   const cancelImage = () => {
-    setImage("");
-    setPreview("");
+    setImage(undefined);
+    setPreview(undefined);
   };
   // image upload function
   const uploadToBucket = async (image) => {
@@ -230,24 +238,23 @@ function CustomUpload({ value, setValue }) {
             )}
           </ModalHeader>
 
-          <ModalBody bgColor="gray.50 relative">
-            <form className=" ">
-              {/* <div className="fixed w-full h-full bg-gray-900  opacity-70"></div> */}
+          <ModalBody bgColor="gray.50" mx="0.5" px="0">
+            <form className="">
               <div className="grid grid-cols-1 space-y-2">
                 {value && (
-                  <div className=" font-semibold  tracking-wide">
+                  <div className=" font-semibold text-center text-green-800 ">
                     {value?.id}
                   </div>
                 )}
                 <div className="flex items-center justify-center w-full">
                   <label
                     className={`flex flex-col rounded-lg ${
-                      !image && !value?.thumb && "border-4 border-dashed"
+                      !image && !value?.thumb && ""
                     } w-full  py-3 px-2 group text-center`}
                   >
                     <div className="h-full w-full text-center flex flex-col items-center justify-center   ">
                       {!preview && !value?.thumb ? (
-                        <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-700 hover:text-white">
+                        <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide transition-all duration-150 uppercase border border-blue cursor-pointer hover:bg-gray-200 hover:text-gray-600">
                           <svg
                             className="w-8 h-8"
                             fill="currentColor"
@@ -273,10 +280,9 @@ function CustomUpload({ value, setValue }) {
                               alt=""
                               className=" object-cover w-full "
                               style={{
-                                maxHeight: "17rem",
+                                maxHeight: "20rem",
                               }}
                             />
-                            {/* {JSON.stringify(info)} */}
                           </div>
 
                           {value?.thumb && (
@@ -305,8 +311,9 @@ function CustomUpload({ value, setValue }) {
 
                           {preview && image && !value?.thumb && (
                             <div
-                              className="m-2 absolute top-0 right-0 rounded-full p-3 bg-white text-gray-500 hover:bg-red-600 hover:text-red-50"
+                              className="m-2 absolute top-0 right-0 rounded-full transition-all duration-200 p-2 bg-white text-gray-500 hover:bg-red-600 hover:text-red-50"
                               onClick={cancelImage}
+                              title="remove image"
                             >
                               <span className="">
                                 <svg
