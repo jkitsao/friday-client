@@ -63,9 +63,9 @@ function Glass() {
                   </svg>
                 </div>
                 <div className="text-white text-lg font-medium mb-2 mt-4">
-                  Create a project
+                  1. Create a project
                 </div>
-                <div className="text-white font-normal">
+                <div className="text-gray-100 font-normal">
                   Visual page, graphic pages, colors, button positions and
                   interfaces Required skills are HTML ,CSS , JAVASCRIPT.
                 </div>
@@ -88,9 +88,9 @@ function Glass() {
                   </svg>
                 </div>
                 <div className="text-white text-lg font-medium mb-2 mt-4">
-                  Create a model
+                  2. Create a model
                 </div>
-                <div className="text-white font-normal">
+                <div className="text-gray-100 font-normal">
                   Writing the actual code for the site, as it controls
                   everything that happens behind the scenes of the site.
                 </div>
@@ -113,9 +113,9 @@ function Glass() {
                   </svg>{" "}
                 </div>
                 <div className="text-white text-lg font-medium mb-2 mt-4">
-                  Add fields to your model
+                  3. Add fields/types to your model
                 </div>
-                <div className="text-white font-normal">
+                <div className="text-gray-100 font-normal">
                   He works on designing interfaces and writing code in the
                   background. He has all the skills for both sides.
                 </div>
@@ -138,9 +138,9 @@ function Glass() {
                   </svg>
                 </div>
                 <div className="text-white text-lg font-medium mb-2 mt-4">
-                  Add your content
+                  4. Add your content
                 </div>
-                <div className="text-white font-normal">
+                <div className="text-gray-100 font-normal">
                   It is the design of the website interface and all its contents
                   before starting programming and development.
                 </div>

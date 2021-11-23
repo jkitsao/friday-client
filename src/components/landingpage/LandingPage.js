@@ -5,10 +5,11 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import Head from "../seo/Head";
-import Landing_Image from "./Landing_Image";
-import Landing_Text from "./Landing_Text";
-import CarouselPage from "../carousel/CarouselPage";
+// import Landing_Image from "./Landing_Image";
+// import Landing_Text from "./Landing_Text";
+// import CarouselPage from "../carousel/CarouselPage";
 import Glass from "./Glass";
+import "../../App.css";
 const navigation = [];
 const projectImage =
   "https://lucidcms.imgix.net/screely-1635156694087.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80";
@@ -45,9 +46,7 @@ export default function LandingPage() {
                         className="h-8 w-auto sm:h-12 sm:-12 object-cover"
                         src={logo}
                       />
-                      <span className="font-semibold text-xl font-mono text-blue-800 mx-1 ">
-                        Lucidcms
-                      </span>
+                      <span className="logo-text text-2xl">Lucidcms.co</span>
                     </a>
                     <div className="-mr-2 flex items-center md:hidden">
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -114,7 +113,7 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <a
-                    href="#"
+                    href="/auth"
                     className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
                   >
                     Log in
@@ -136,9 +135,9 @@ export default function LandingPage() {
                 </span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-2xl sm:mx-auto md:mt-5 md:text-xl lg:mx-auto">
-                A simple headless content management system that acts primarily
-                as a content repository, makes content accessible via an API
-                without a built-in front-end or presentation layer.
+                A simple free to use headless content management system that
+                acts as a content repository, makes content accessible via an
+                API without a built-in front-end or presentation layer.
               </p>
               <div className="mt-5 sm:mt-8 sm:flex justify-center ">
                 <div className="rounded-md shadow">

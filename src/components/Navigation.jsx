@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useUser } from "../firebase/useUser";
+import '../App.css'
 
 import logo from '../assets/logo.png'
 const navigation = [
@@ -47,7 +48,7 @@ export default function Navigation() {
                     src={logo}
                     alt="Workflow"
                   />
-                  <span className='text-xl inline-block font-normal font-mono mx-2 text-gray-50'>
+                  <span className='text-xl inline-block font-normal nav-logo-text mx-2 text-gray-50'>
                   lucidcms
                   </span>
                 </div>
