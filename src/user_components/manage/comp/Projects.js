@@ -89,7 +89,9 @@ export default function Projects({ refresh, setRefresh }) {
               ))}
           </div>
         ) : (
-          <LoadingComp />
+          <div className="w-full h-full flex justify-center items-center">
+            <LoadingComp />
+          </div>
         )}
       </div>
       {!isLoading && data && data.length < 1 && (
