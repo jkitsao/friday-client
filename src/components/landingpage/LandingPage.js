@@ -5,6 +5,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import Head from "../seo/Head";
+import Player from './Player'
 // import Landing_Image from "./Landing_Image";
 // import Landing_Text from "./Landing_Text";
 // import CarouselPage from "../carousel/CarouselPage";
@@ -172,7 +173,11 @@ export default function LandingPage() {
       <Landing_Text />
       <Landing_Image image_src={apiImage} /> */}
       {/* <CarouselPage /> */}
-      <Glass />
+      {/* <Glass /> */}
+      
+      <div className='w-full flex justify-center'>
+      <Player/>
+      </div>
 
       <div className="mx-auto h-10 flex items-center justify-center  bg-gray-900 text-gray-200 sticky bottom-0 w-full rounded-t-sm opacity-95">
         <div className="text-center text-base">

@@ -24,8 +24,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import LoadingComp from "./components/LoadingComp";
 initFirebase();
 // useGaTracker();
-ReactGA.initialize("G-E7F7MKSG1P");
-ReactGA.pageview(window.location.pathname + window.location.search);
+// ReactGA.initialize("G-E7F7MKSG1P");
+// ReactGA.pageview(window.location.pathname + window.location.search);
 
 function App() {
   const { user, loadingState } = useUser();

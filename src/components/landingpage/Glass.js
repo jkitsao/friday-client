@@ -1,4 +1,5 @@
 import React from "react";
+import Player from './Player'
 
 function Glass() {
   return (
@@ -14,12 +15,13 @@ function Glass() {
     >
       <div
         className="flex flex-row justify-center items-center min-h-screen bg-app bg-center bg-no-repeat bg-cover"
-        style={{
-          minHeight: "80vh",
-        }}
+        // style={{
+        //   minHeight: "80vh",
+        //   minWidth:''
+        // }}
       >
-        <main className="flex flex-col lg:flex-row bg-white backdrop-filter backdrop-blur-lg bg-opacity-20 rounded-xl overflow-hidden w-full max-w-5xl shadow-lg m-4 lg:m-6">
-          <div className="flex-1 p-4 lg:p-6">
+        <main className="flex justify-center items-center   rounded-xl overflow-hidden w-full max-w-5xl shadow-lg p-3 m-4 lg:m-6">
+          {/* <div className="flex-1 p-4 lg:p-6">
             <div className="text-lg text-white mb-8 flex items-center">
               <svg
                 className="w-10 h-10"
@@ -146,7 +148,8 @@ function Glass() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+          <Player/>
         </main>
       </div>
     </div>
