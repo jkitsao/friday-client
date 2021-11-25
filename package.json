@@ -6,6 +6,8 @@
     "@chakra-ui/icons": "^1.0.16",
     "@chakra-ui/react": "^1.6.3",
     "@craco/craco": "^6.2.0",
+    "@dicebear/adventurer-neutral": "^4.10.1",
+    "@dicebear/avatars": "^4.10.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@headlessui/react": "^1.2.0",

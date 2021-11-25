@@ -19,6 +19,7 @@ function Project({ project, handleDeleteProject }) {
       onMouseLeave={() => setHover(false)}
       style={{
         minWidth: "17rem",
+        minHeight: "12.5rem",
       }}
       // onclick={() => alert(project._id)}
     >

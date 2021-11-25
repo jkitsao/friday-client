@@ -59,7 +59,7 @@ function Api_From_Model({ model }) {
             className="h-full w-full flex justify-center items-center"
             style={{
               minHeight: "50vh",
-              maxHeight: "70vh",
+              maxHeight: "60vh",
             }}
           >
             {/* <LoadingComp /> */}

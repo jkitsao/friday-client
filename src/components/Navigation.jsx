@@ -6,6 +6,7 @@ import { useUser } from "../firebase/useUser";
 import '../App.css'
 
 import logo from '../assets/logo.png'
+import Avatar from "./Avatar";
 const navigation = [
   
   { name: "Projects", href: "/projects", current: true },
@@ -86,11 +87,12 @@ export default function Navigation() {
                       <div>
                         <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                           <span className="sr-only">Open user menu</span>
-                          <img
+                          {/* <img
                             className="h-8 w-8 rounded-full"
                             src="https://avatars.dicebear.com/api/bottts/john.svg"
                             alt=""
-                          />
+                          /> */}
+                          <Avatar seed={user?.name}/>
                         </Menu.Button>
                       </div>
                       <Transition

@@ -5,6 +5,7 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from '../../../assets/logo.png'
 import { useUser } from "../../../firebase/useUser";
 import '../../../App.css'
+import Avatar from "../../../components/Avatar";
 const navigation = [
   { name: "Projects", ref: "projects", current: true },
   { name: "Models", ref: "content-model", current: false },
@@ -17,7 +18,7 @@ function classNames(...classes) {
 }
 
 export default function NavTabs({changeTab,currentTab}) {
-  const {logout}=useUser()
+  const {user,logout}=useUser()
   return (
     <Disclosure as="nav" className="bg-gray-900 sticky top-0">
       {({ open }) => (
@@ -85,11 +86,12 @@ export default function NavTabs({changeTab,currentTab}) {
                       <div>
                         <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                           <span className="sr-only">Open user menu</span>
-                          <img
+                          {/* <img
                             className="h-8 w-8 rounded-full"
                             src="https://avatars.dicebear.com/api/bottts/john.svg"
                             alt=""
-                          />
+                          /> */}
+                          <Avatar seed={user?.name}/>
                         </Menu.Button>
                       </div>
                       <Transition

@@ -3,6 +3,8 @@ import Unsplash from "../../components/unsplash/Unsplash";
 import { LinkIcon, CheckIcon } from "@heroicons/react/solid";
 import upload from "../../assets/upload.png";
 import { useToast } from "@chakra-ui/react";
+import { useUser } from "../../firebase/useUser";
+import { postMediaToGallery } from "./lib/uploadGallery";
 
 // import axios from "axios";
 import api from "../../api/axios";
@@ -30,7 +32,7 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import Cloudinary_Uploader from "../../components/imageUploader/Cloudinary_Uploader";
+// import Cloudinary_Uploader from "../../components/imageUploader/Cloudinary_Uploader";
 
 function MediaElement({ field, content, setContent, fields }) {
   let obj = field?.name;
@@ -123,6 +125,7 @@ function CustomUpload({ value, setValue }) {
   const [uploadingImg, setUploadingImg] = useState(false);
   const [file, setFile] = useState({});
   const toast = useToast();
+  const { user } = useUser();
 
   //handle image upload
 
@@ -161,19 +164,24 @@ function CustomUpload({ value, setValue }) {
     setUploadingImg(true);
     const formData = new FormData();
     formData.append("image", image);
+    // formData.append("user", image);
+
     const result = await api.post("/assets/upload", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
+    // console.log({ result });
+    //log image and user info
+    const { info } = result.data;
+    let imageData = result.data?.image;
+    // console.log({ imageData });
+    postMediaToGallery(imageData, info, user);
     setUploadingImg(false);
     return result;
   };
   const test = async () => {
     try {
       const res = await uploadToBucket(image);
-
-      // data.thumb = res.data.thumb;
-      // data.id = res.data.id;
-      setValue(res.data);
+      setValue(res.data?.image);
       return onClose();
     } catch (error) {
       console.error(error);
@@ -346,7 +354,7 @@ function CustomUpload({ value, setValue }) {
             <Button variant="ghost" colorScheme="red" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            {!value && (
+            {/* {!value && ( */}
               <Button
                 colorScheme="blue"
                 type="button"
@@ -355,7 +363,7 @@ function CustomUpload({ value, setValue }) {
               >
                 {uploadingImg ? <Spinner /> : " Publish image"}
               </Button>
-            )}
+            {/* )} */}
           </ModalFooter>
         </ModalContent>
       </Modal>
