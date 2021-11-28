@@ -5,7 +5,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import Head from "../seo/Head";
-import Player from './Player'
+import Player from "./Player";
 // import Landing_Image from "./Landing_Image";
 // import Landing_Text from "./Landing_Text";
 // import CarouselPage from "../carousel/CarouselPage";
@@ -132,13 +132,12 @@ export default function LandingPage() {
                   <br />
                 </span>{" "}
                 <span className="block text-indigo-600 xl:inline">
-                  your side projects
+                  small projects
                 </span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-2xl sm:mx-auto md:mt-5 md:text-xl lg:mx-auto">
-                A simple free to use headless content management system that
-                acts as a content repository, makes content accessible via an
-                API without a built-in front-end or presentation layer.
+                Configure a free minimal headless CMS online in seconds and use
+                up-to-date content in your project
               </p>
               <div className="mt-5 sm:mt-8 sm:flex justify-center ">
                 <div className="rounded-md shadow">
@@ -146,7 +145,7 @@ export default function LandingPage() {
                     href="/projects"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                   >
-                    Dashboard
+                    Get started its free
                   </a>
                 </div>
                 {/* <div className="mt-3 sm:mt-0 sm:ml-3">
@@ -174,9 +173,9 @@ export default function LandingPage() {
       <Landing_Image image_src={apiImage} /> */}
       {/* <CarouselPage /> */}
       {/* <Glass /> */}
-      
-      <div className='w-full flex justify-center'>
-      <Player/>
+
+      <div className="w-full flex justify-center">
+        <Player />
       </div>
 
       <div className="mx-auto h-10 flex items-center justify-center  bg-gray-900 text-gray-200 sticky bottom-0 w-full rounded-t-sm opacity-95">
